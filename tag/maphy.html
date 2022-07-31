@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Unhewn Thoughts - Maphy</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Unhewn Thoughts</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/category/anki.html">Anki</a></li>
+                    <li><a href="/category/maphy.html">Maphy</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/maphy/ankimaphycs.html">Guide to Applied Ankimaphycs</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-01-11T15:51:00+01:00">
+                Published: Fr 11 Januar 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2020-02-02T15:00:00+01:00">
+                Updated: So 02 Februar 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/ut.html">UT</a>
+        </address>
+<p>In <a href="/category/maphy.html">Maphy</a>.</p>
+<p>tags: <a href="/tag/anki.html">Anki</a> <a href="/tag/guide.html">Guide</a> <a href="/tag/maphy.html">Maphy</a> </p>
+</footer><!-- /.post-info --><h1>Guide to Applied Ankimaphycs</h1>
+<h5><a href="#table-of-contents">Disclaimer</a></h5>
+<p><strong>¡This article is currently a work in progress!</strong> I just wanted to get the majority of what I want to say out of the way so that it may help someone already. I am not yet satisfied with it, and I am sorry for the rambling and it being very rough around the edges. I currently don't have too much time, so any further progress will be slow.</p>
+<p>If there is anything to take with you, maybe start with my current workflow and see if there is anything interesting for you. If this is of interest to you, my far less polished takes on stuff and anecdotes in previous section may also be interesting.</p>
+<p><strong>Note that most of this is just anecdotes and my personal opinions!</strong> I tried to add references where I know them, finding them is part of the work I mentioned that I intend to do, but mostly you need to think about this yourself, try out whether it sounds good and sound and do small scale experiments (before scaling these up). Also read other things, ask in the <a href="https://www.reddit.com/r/Anki/">Anki subreddit</a>, but most of all think and try things out for yourself. I tried to write this article to save you time and I hope I can be useful, but always think for yourself.
+By the way, I could cite the [20 rules of formatting knowledge][20rules** a lot in this article, I did this only occasionally because it would get overwhelming otherwise and because I am lazy.</p>
+<p><strong>Update:</strong> (2020.02.02)
+I have added a shared deck <a href="https://ankiweb.net/shared/info/403056739">https://ankiweb.net/shared/info/403056739</a> to more easily show off my current card design. Currently I'm using css grids instead of html tables, which look promising.
+Furthermore here is a link <a href="https://sofiabelen.github.io/selfstudy/Russian-education-maddness.html">https://sofiabelen.github.io/selfstudy/Russian-education-maddness.html</a> to another complementary blog I found.</p>
+<h5><a href="#table-of-contents">Conventions</a></h5>
+<ul>
+<li>maphy = math and physics</li>
+<li>natural repetition = repetition that occurs by chance in your daily life and is not planned or scheduled by you (aside from you expecting such repetition to occur in general in your environment, but where you don't schedule repetitions for specific items)</li>
+</ul>
+<h5><a href="#table-of-contents">Tips on Getting Around the Page</a></h5>
+<p>I sometimes have internal links to different sections of this article, if you click on them you can use the 'back' button you use to get to the previous page, to get to your last reading position.</p>
+<p>This works, because to jump to the linked section, your browser accesses the same page under a new URL, which is <code>old-url#section-heading</code>. Thus going back in your history you land on the <code>old-url</code> page, for which your browser usually saves your reading position. You can have different reading positions for <code>old-url</code> and <code>old-url#section-heading</code> since for your browser they are, if not different pages, then different URLs.</p>
+<p>Furthermore every headline is a link back to the table of contents, which should allow you to get around the page quickly.</p>
+<h2><a href="#table-of-contents">What This Is About</a></h2>
+<p>In this article I want to share my experiences in using Anki for math and physics (maphy), as well as how I currently use Anki for these subjects and why after a long period of experimentation and experiences learning for tests and in general I arrived at this method, or rather why I think this is a promising way.</p>
+<h4><a href="#table-of-contents">Cheesy Intro</a></h4>
+<p>Remember the proofs in math and physics you slept through [*], which you dread with abandon? With this method we will do nothing (almost nothing but proofs) and you will get to love proofs you will be delighted every time you find a nice proof you can add to your Anki collection. And in the end we will [**] fluently proof a lot out of our hand, ad hoc, know all the definitions and formulas and will be chunking our way to intelligence.</p>
+<p>[*]\: Assuming you are a regular physics student swamped with math, physics, exphy (experimental physics) exercise sheets, lab reports and a 10h+ side job, as well as trying to maintain a semblance of a social life.
+[**]\: Since I am just starting on my own journey with this I include myself. Thus you need to convince yourself whether this method sounds good to you, I can't guarantee anything yet, but preliminary testing is resoundingly positive.</p>
+<h2><a href="#table-of-contents">Read These Articles First</a></h2>
+<p>Read these first:
+<a href="https://ncase.me/remember/">Comic Guide to spaced repetition</a>
+<a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">Twenty rules of formulating knowledge</a>
+Two articles by Dr. Michael Nielsen on <a href="http://augmentingcognition.com/ltm.html">spaced repetition in general</a> and in <a href="http://cognitivemedium.com/srs-mathematics">relation to mathematics</a>.</p>
+<p>I highly recommend (since I can’t make you) read Dr. Piotr Woźniak’s Twenty Rules Of Formulating Knowledge first, since a lot of what I say here will just be a reformulation of what’s already there. Even as I write this and reread the article I notice, that improvements that I have come upon recently have already been formulated there and I must have simply forgotten them or had not realized them in the past. So rereading the article can’t hurt, especially so that you don’t waste time recovering things the hard/wasteful way.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#learn-first-review-latertoc">Learn First Review Later</a></li>
+<li><a href="#how-i-managed-to-screw-this-uptoc">How I Managed to Screw This Up</a></li>
+<li><a href="#give-your-memory-some-credittoc">Give Your Memory Some Credit</a></li>
+<li><a href="#choose-your-own-battles-wiselytoc">Choose Your Own Battles Wisely</a></li>
+<li><a href="#specialization-and-natural-reviewingtoc">Specialization and Natural Reviewing</a></li>
+<li><a href="#priority-of-learning-in-maphy-vs-languages">Priority of Learning in Maphy vs Languages</a></li>
+<li><a href="#muscle-memorytoc">Muscle Memory</a></li>
+<li><a href="#well-definednesstoc">Well-Definedness</a></li>
+<li><a href="#relation-to-sentence-miningtoc">Relation to Sentence Mining</a></li>
+<li><a href="#learning-cards-themselvestoc">Learning Cards Themselves</a></li>
+<li><a href="#early-planning-spares-a-lot-of-work-later-ontoc">Early Planning Spares a Lot of Work Later On</a></li>
+<li><a href="#harder-is-not-always-bettertoc">Harder Is Not Always Better</a></li>
+<li><a href="#adjust-your-learning-stepstoc">Adjust Your Learning Steps</a></li>
+<li><a href="#increasing-the-graduating-intervaltoc">Increasing the Graduating Interval</a></li>
+<li><a href="#adjust-the-failure-settingstoc">Adjust the Failure Settings</a></li>
+<li><a href="#spacing-out-your-reviewstoc">Spacing out Your Reviews</a></li>
+<li><a href="#my-maphy-settingstoc">My Maphy Settings</a></li>
+<li><a href="#rescheduling-cardstoc">Rescheduling Cards</a></li>
+<li><a href="#the-efficiency-of-proofstoc">The Efficiency of Proofs</a></li>
+<li><a href="#why-i-still-use-formulae-and-definitions-cardstoc">Why I Still Use Formulae and Definition's Cards</a></li>
+<li><a href="#thinking-about-additional-information-of-definitionstoc">Thinking About Additional Information of Definitions</a></li>
+<li><a href="#card-designtoc">Card Design</a></li>
+<li><a href="#benefits-of-a-fixed-structuretoc">Benefits of a Fixed Structure</a></li>
+<li><a href="#thinking-about-the-steps-of-your-proofstoc">Thinking About the Steps of Your Proofs</a></li>
+<li><a href="#showing-stepstoc">Showing Steps</a></li>
+<li><a href="#tip-on-formatting-proofs-in-ankitoc">Tip on Formatting Proofs in Anki</a></li>
+<li><a href="#adding-sources-to-your-cardtoc">Adding Sources to Your Card</a></li>
+<li><a href="#my-current-workflowtoc">My Current Workflow</a></li>
+<li><a href="#card-designstoc">Card Designs</a><ul>
+<li><a href="#example-maphy-basictoc">Example: Maphy-Basic</a></li>
+<li><a href="#example-maphy-c-lhs-op-name-texttoc">Example: Maphy-C-LHS-Op-Name-Text</a></li>
+<li><a href="#example-maphy-proofs-octoc">Example: Maphy-Proofs-OC</a></li>
+<li><a href="#example-maphy-flexible-ctoc">Example: Maphy-Flexible-C</a></li>
+</ul>
+</li>
+<li><a href="#writing-the-cardstoc">Writing the Cards</a><ul>
+<li><a href="#neo-2-keyboard-layouttoc">Neo-2 Keyboard Layout</a></li>
+</ul>
+</li>
+</ul>
+<p>Before I come to the method I want to touch upon some things important for learning with Anki in general.</p>
+<h2><a href="#table-of-contents">Learn First Review Later</a></h2>
+<p>This is obvious and it is also Rule #1 in the <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">20 rules</a> but you'd be surprised how I still managed to screw this up. So please always remember this, otherwise you might remember some formulae and might even pass the tests, etc., but disregarding everything else, it is also very inefficient.</p>
+<h4><a href="#table-of-contents">How I Managed to Screw This Up</a></h4>
+<details>
+
+I do not remember exactly how my studying got so screwed up, so this is a lot of personal reminiscing and guessing, but I hope it can be helpful.
+
+In the end this might just be part of the natural learning cycle for learning to use Anki, especially since this is more of a fringe field, where a lot of people discover a lot on their own. What I mean with this is that it is natural to explore, thus if given a tool to help remember everything you can think of it seems natural to try to use it for everything, to get overexcited, to misuse it, etc. I think this is probably what happened to me. Combined with an interest in a lot of thinks, I used Anki to learn my subjects at university (physics and math) as well as programming languages, computer science in general and Japanese.
+
+At some point I got into the habit of always thinking about ankifying the things I read, I managed to restrict this to my above mentioned studies, but still, I was sure that if I could remember everything I read it would help me be better in these subjects.
+
+I mentioned above, that I was able to restrict this to my main studies, but I briefly tried to ankify almost everything else. From cooking, nutritional science, medicine, chemistry, history, tips and tricks for being a better game master for table top games, birthdays and probably more, that I can't remember right now. The interesting or maybe not so surprising thing is, that this did work, although to varying degrees as well as with varying degrees of efficiency. This lead me to realize, that time is finite and you should prioritize.
+
+And in the end what I did was not not understanding and simply learning things by hard, but learning only partially and doing the rest of the learning whilst doing Anki reviews. In the end because of this I also couldn't learn without ankifying. At my worst times it felt wrong to just pick up a book, because I thought what is the point if I don't also make an Anki deck for this. So I would always spend so much time trying to ankify everything while I read, and thus not getting anywhere always treading on the same spot. And thus, for example, I also lost out on the connections that come from using stuff in previous section in the later. You don't need to ankify everything now, read everything first and then come back and choose the most efficient points to ankify and think about whether or not and how to do the rest later.
+</details>
+
+<h4><a href="#table-of-contents">Give Your Memory Some Credit</a></h4>
+<p>The positive news now is that learning is far more important than reviewing and we can give our memory some credit.</p>
+<p>Disregarding everything else, or assuming the worst case scenario, if you have learned and really understood something, you can always rely on relearning being much faster [*] than the initial learning. Often you can just take a cheat sheet and have a pretty good understanding again.</p>
+<p>[*]\: I assume this to be mostly common knowledge, or rather coming from hearsay and personal experiences, thus take this with a grain of salt. However it seems to be true, as cursory utilization of search engines suggests. I think this is also part of Ebbinghaus's initial findings, which I was reminded by <a href="https://www.reddit.com/r/askscience/comments/kp1h1/is_it_easier_to_relearn_something_you_used_to/c2m0jj3/">this</a> reddit comment here.</p>
+<p>You can also combine this cheat sheet approach with looking up formulae to calculate something. Thus you don't need to remember everything. Just learn it once and have your cheat sheets ready. This is similar to how often, it is only required to know the formulae, have a rough understanding of where they come from and a good understanding of how to use them, to pass tests. I assume this is, why universities nowadays mostly only ask this of you. That is, because that is the only thing they can reasonably ask of you, as probably not a lot of courses integrate Anki or teach about spaced repetition systems in general. It is, in a sense efficient since that is mostly what (I expect) later work would require of you, and I assume natural repetition and specialization does the rest.</p>
+<h4><a href="#table-of-contents">Choose Your Own Battles Wisely</a></h4>
+<p>As Michael Nielsen has discussed <a href="http://augmentingcognition.com/ltm.html">here</a>,</p>
+<blockquote>
+<p>I therefore have two rules of thumb. First, if memorizing a fact seems worth 10 minutes of my time in the future, then I do it**. Second, and superseding the first, if a fact seems striking then into Anki it goes, regardless of whether it seems worth 10 minutes of my future time or not. The reason for the exception is that many of the most important things we know are things we're not sure are going to be important, but which our intuitions tell us matter. This doesn't mean we should memorize everything. But it's worth cultivating taste in what to memorize.</p>
+<p>** I first saw an analysis along these lines in Gwern Branwen's review of spaced repetition: Gwern Branwen, Spaced-Repetition. His numbers are slightly more optimistic than mine – he arrives at a 5-minute rule of thumb, rather than 10 minutes – but broadly consistent. Branwen's analysis is based, in turn, on an analysis in: Piotr Wozniak, Theoretical aspects of spaced repetition in learning.</p>
+</blockquote>
+<p>you should only add an item if it will save you a certain amount of time later (usually 5 to 10 minutes) or be really interesting in it's own right. I imagine the previous discussion about how you can and should trust your memory is among the points for why you can and should be selective.</p>
+<h4><a href="#table-of-contents">Specialization and Natural Reviewing</a></h4>
+<p>Learning things, even when not reviewing them is worthwhile, especially combined with the fact, that you do some natural reviewing anyway. Either by circumstance or for example, because the basics are used in more advanced chapters of guides you read, study, etc. This might also be why I remember the basics better than the more advanced stuff.</p>
+<p>If you combine this with specialization in your field of study you usually don't need a lot of scheduled reviews in that field, since you will be doing so much work there. That is, you will either be using the things all the time, or your focus on the topic, combined with a lot of time spent in the field, will make natural reviewing of things in the field —which you don't use all the time— far more likely.</p>
+<h4><a href="#table-of-contents">Priority of Learning in Maphy vs Languages</a></h4>
+<p>With random stuff —where there is no real understanding involved, just plain memorizing— it is important to regularly review. Without this, previous work can be almost completely lost. This is in contrast to math and physics and natural sciences in general. Things you once understood can be more easily reacquired.</p>
+<p>Especially since you have done the heavy lifting of understanding already, you don't really need to do it again, maybe just remember a trick here or there or some key concepts or definition. Anki can still be tremendously helpful here but using Anki to remember stuff without first understanding is really really bad. That being said, it kind of works. At least for exams, cramming etc., but you will fall flat on your face when you actually have to do something with it.</p>
+<p>Additionally, regarding maphy subjects, if you do not learn first you are fated to learn everything like unrelated vocab, without mnemonics, i. e. as inefficient as possible. This is because you then can not make use of the logic and relations inherent to maphy, which would serve as natural mnemonics, or rather you don't need mnemonics when you have understanding, since understanding trumps mnemonics.</p>
+<p>Though as mentioned above, the degree of efficiency for brute forcing language vocabulary and things involving understanding are quite different. I have forgotten almost all of the vocabulary which I learned at some point but then didn't have the time to review for half a year or so and which I now have to relearn. A I can still recall few percentile of those vocabulary items, while I remember the majority only vaguely. That is, I just remember one facet or the other, or vaguely know the direction of the meaning. Half the time though, I'm completely off. So the things which remain are more a sense of familiarity and some remnants of memory, but no comparison to learning stuff involving understanding or even more amazing muscle memory.</p>
+<p>Thus with maphy understanding first is important but even without review you lose less without reviewing.  With languages, understanding is no problem [*] and you can go directly to memorizing. However without spaced repetition from an early stage, you forget the information far more quickly and need a higher percentage of initial learning time to reacquire the knowledge.</p>
+<p>[*]\: Except for example with unfamiliar grammar rules which follow the maphy pattern, since here understanding is far more important than remembering the particles or the exact pattern involved.</p>
+<h4><a href="#table-of-contents">Muscle Memory</a></h4>
+<p>I recently unpacked my guitar and bass guitar again after not having played guitar for more than 6 years and bass guitar for more than 4 years. After about 30 to 60 minutes (for each instrument) of figuring out a few old songs, I could play all of them from sight almost as if no time had gone by. This of course is probably heavily dependent on how well and how long you had played the instrument previously.</p>
+<p>Another thing to note here, is that initially I had completely forgotten how each note was played, I remembered one or two but had to figure each one out from there. After that I could let muscle memory take over and almost play as I used to. Given a few more days, this awkwardness would probably rapidly disappear and tend towards to my old abilities.</p>
+<p>Now in math and physics there is also a lot of muscle memory involved. You probably will have a hard time forgetting how to rearrange equations and after looking up old algorithms will be quickly familiar on how to implement them again. From my observation the lone facts tend to be far more fragile, and I think this is what it comes back to. The greater connectivity of muscle memory stemming from the connectivity inherent to procedural memory as well as the fact, that you probably repeated your muscle memory a lot with spacing in between, will have made these memories stronger. That is more time resilient, through repeated retrieval and in the case of procedures through interconnection.</p>
+<h2><a href="#table-of-contents">Well-Definedness</a></h2>
+<p>I choose this term in analogy to the concept of a well defined map. Thus I use this term to describe the extend to which it is clear, what is expected of you i. e. what the expected answer is.</p>
+<p>Be aware, that well-definedness with Anki cards is less a proposition (in the logical sense) and more of a continuum. Meaning that a card has no exact answer, since we are working here with the enormous plasticity of your brain and not a rigid system where you can specify a answer in a few bits of information. Especially, since every brain is different. Thus a card can mean a lot of different things to a lot of different people, which is a boon as well as a problem.</p>
+<h4><a href="#table-of-contents">Relation to Sentence Mining</a></h4>
+<p>Especially with cards you make yourself, and where no conflict is expected, you can use this for any topic to reduce the time spent on card creation. This has also been used in language learning for sentence mining with great effect.</p>
+<p>I personally had problems remembering exactly which word fits into which cloze with my sentences (after I had have a few), but that probably is just my limited grasp on the language, as well as using bad examples. In general I found you can alleviate this problem by using cloze-hints (i. e. <code>{{c#::Vocab::Hint}}</code> in Anki) rather well. As well as by limiting yourself to certain domain of few words, i. e. those clozes where only a few words would fit, generally meaning for specific terminology and not general or grammatical expressions. The latter are also generally well learned through massive comprehensible input and then are ingrained in so many example sentences, that you don't need dedicated flashcards, at least not those sentence mining ones.</p>
+<p>I can imagine, that target-language → native language cards work well, for those that don't have a bazillion answers, but generally it's not worth the effort of trying to make those. You usually should just watch, read, hear, write a lot of things, and if all else fails (your memory I mean) you can always just look it up, since the grammatical particles or rules should be a tiny amount compared to the vocabulary a student is expected to learn [*]. Especially since you learned it previously and thus know (at least vaguely) what you need to look up. Otherwise you already failed in the <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">1st rule of formulating knowledge</a>.</p>
+<p>[*]\: Please give me an exception to this, it would delight me, and I don't mean ones where the combination of a few grammatical rules can lead to a vast amount of grammatical possibilities, e. g. those languages with a million possibly conjugations.</p>
+<h4><a href="#table-of-contents">Learning Cards Themselves</a></h4>
+<p>The flip side to this directly ties into the discussion of making cards yourself versus using premade decks. This discussion is essentially usually a discussion on whether it is more efficient to learn the cards of others rather than using your own self made cards which come with your own memories and are usually custom made to your own brain. This discussion is often subject dependent, since with some subjects this is easier than with others.</p>
+<p>This learning the cards effect is not just confined to learning cards of premade decks, but can happen with your own cards as well. Maybe not directly after you've made them, but after a while and once you have made a lot of other cards, it becomes harder and harder to remember what was asked on a certain card and you spent time remembering what was asked on this card. After a while you have thus learned what is the expected answer for this card as well as the answer. This is an especially frustrating process, since you are remembering senseless information (or information that seems senseless to you and which in this case it certainly is) which usually lowers motivation and makes learning in general at that time, not just learning cards, harder. Thus whenever I speak of learning cards in the future, this is what I mean.</p>
+<p>Aside from simply making the cards harder, I expect this learning of cards themselves makes long term retention worse. Because, maybe you are good at remembering the actual answer to a card, but not so good at remembering what is asked, i. e. I would expect the retention efficiency of remembering the card and the answer to be different, and the retention efficiency of remembering what is asked being worse than for the answer. The reason I expect the retention efficiency for learning the card to be worse is because it is boring, you know it is useless stuff you are remembering, that is your motivation is low to remember this, and it is arbitrary, at least far more so than the answer with math and physics related subjects usually is.</p>
+<p>This stems from my personal experience, where I think, if I'm not misremembering, that not knowing what a card wants, is often/usually what caused me to fail on cards after 3 months or so of not seeing them (but especially, I think, after 5 to 6 months or so).</p>
+<h4><a href="#table-of-contents">Early Planning Spares a Lot of Work Later On</a></h4>
+<p>This also means, that, in general, it is okay to keep old, badly made cards in your deck, since after you have learned them, it is generally not worth spending the time reworking them, except maybe in some extreme cases and those where you have not really learned the cards yet.</p>
+<p>I used this aspect frequently in my own experimentation. It being my rational for experimenting on a small scale [*]. I would always tell myself to experiment, and if something didn't work, you would not have wasted your time, since you can just keep on using them, and that they would then serve the double function of reminding me of bad designs, as well as pushing me towards working on better designs. I can attest that this rational works, but it nevertheless is still quite frustrating, thus I have culled a lot of old bad cards, and only left a few, which I already learned really well, or which weren't as bad as the rest of them. This in turn freed up a lot more review time I could then spend on better endeavors. Thus it is a double edged sword, but I think the point still stands.</p>
+<p>[*]\: and on a larger scale, when I couldn't help myself, usually resulting in a lot of bad cards I now had to live with or had cull i. e. to suspend and never see again.</p>
+<p>I noticed that the effect from the lack of well-definedness in your deck becomes more and more pronounced the larger your deck is (which makes sense, you don't really need experience for this), and the more cards interfere with each other. Thus you won't notice the extend of this problem in the beginning before it comes back to haunt you. But reworking cards takes a tremendous amount of time, with questionable return on investment [*]. Thus I hope you think about this before and while making cards, so that you can spare yourself the brunt of this effect, since, I expect, you will always have to deal with this problem.</p>
+<p>[*]\: I mean, the return is generally good, just not the efficiency, since it usually takes me a lot of time, comparable to the time of making the card in the first place, to rework a card.</p>
+<p>In general I think the <a href="https://en.wikipedia.org/wiki/Pareto_principle">pareto principle</a> or 80/20 rule applies here as well, meaning that 20% of the work already yields 80% percent of the result but getting those last 20% requires 80% of the work. The work for the last few percent probably tends more towards infinity than towards a finite amount, but you get the point. This also reminds me of the retention efficiency and how often you need to review things (both models break down (in my humble opinion), once you try to get 100%).</p>
+<h4><a href="#table-of-contents">Harder Is Not Always Better</a></h4>
+<p>As my last point I want to give a personal anecdote but which I think illustrates a common problem.</p>
+<p>I noticed that I often made cards intentionally a lot harder by removing context information, which would help me a little bit but would also help tremendously to increase the well-definedness of the cards. Thus without this context information, it was a lot harder to remember what the card asks, although it only removed a few clues to help me with the answer. Until I noticed, I was not aware, that the majority of the added difficulty came from removing context clues, and not from removing hints. I. e. the majority of the difficulty came from also needing to learn the card itself and not from having a hard time remembering the answer. I realized, that for me this was one of those cases, where choosing the most difficult path is not always the most efficient or best path for what you envision, since, again, most of the added difficulty comes from thinks you don't care about.</p>
+<p>Now I'm of the opinion that leaving these context clues in there, is less harmful than the time or annoyance spend on memorizing the expected answer to a card. Especially since I feel that these context clues don't matter. If you don't know the information anyway, you still won't be able to answer the question — even if you know what exactly is expected and even know parts of the answer already because of those context clues — since you still need to be able to put it together and know it in the first place.</p>
+<p>Also in real life, you usually get a lot of these hints already, or can spend a little bit of time to get some clues, since especially with things you don't need to get right on the first try, you can experiment a bit and get feedback. This I think is also possible with formulas, but is especially the case for when I tried to use Anki cards to learn keyboard shortcuts for my different operating systems.</p>
+<p>In summary I think, that paying attention to the well definedness of your cards should thus result in less annoyance when reviewing, less reviewing time, less mental strain and less unnecessary reviewing or learning.</p>
+<h2><a href="#table-of-contents">Adjust Your Learning Steps</a></h2>
+<p>I will discuss my tips and strategies I discovered to easily make well defined cards in the next section. In this section I want to discuss the importance of adjusting your learning steps. This is especially useful for maphy subjects but not exclusively. I also went and adjusted my steps on my Japanese sentence mining and vocab cards to greatly reduce my daily reviewing time, making my daily review schedule far more amenable.</p>
+<p>I will recommend having a look at the corresponding sections in the Anki manual (start <a href="https://apps.ankiweb.net/docs/manual.html#learning">here</a>), since for this it is best to have an understanding of what happens and being able to adjust these settings yourself, since these depend heavily on the subject, your card design, and yourself in general, as well as how you review your cards, how much time you allow yourself for recall, etc. Nevertheless if you are just starting with Anki or want to put this off for later, you can simply copy the <a href="#my-maphy-settings">settings I will discuss below</a> and start from there.</p>
+<p>Additionally I can recommend <a href="https://www.youtube.com/watch?v=wvF5Y2101Lk">this</a> video from Anking which does a good job explaining everything and giving starting recommendations [*]. It wasn't until recently where I had Anki cards I did for a while, that I had the idea to maybe have a look at these settings. I was familiar with the idea though from an <a href="https://vladsperspective.wordpress.com/2017/03/14/optimize-your-anki-youre-overtesting-yourself-on-too-few-cards-make-huge-gains/">article</a> I read a while ago but didn't have a lot of success with at that time (, which was why I had abandoned it until now).</p>
+<details><summary>[*]: </summary>Most of it came to late for me, except for the 20% failure setting I took from there. I also have started to make an effort and force myself to watch other videos on Anki to scan them for useful tips, so thanks for that (making me watch these videos, but also reminding me of another source of information). (Videos are not really searchable so I guess that, and that there weren't a lot of videos on the subject until a while ago, was probably why I forgot about this until now.)
+</details>
+
+<h4><a href="#table-of-contents">Increasing the Graduating Interval</a></h4>
+<p>Adjusting your learning steps from the default settings can be especially relevant for maphy subjects, since here you do not usually learn arbitrary knowledge like vocabulary in languages [*] but things with derivations and which are logical or can be understood intuitively or linked to real life experiences.</p>
+<p>[*]\: Languages, where you don't have any connection, if you learn related languages you can also benefit greatly from increasing the learning steps.</p>
+<p>Thus you want your cards to start with a larger interval, since you are supposed to really understand what you put into a card for review first. You should be able to recall it easily after a few days, depending on the thing even after two weeks or more. From personal experience I know, that I could remember things, that I really understood well and dissected and looked at from a lot of angles, even after two weeks. Meaning I would be able to answer the cards I would do for that subject. I can attest to this from a few more recent experiences. As I described in the <a href="#learn-first-review-latertoc">learn first review later</a> section, I had to frequently correct my ankifying behavior. Thus in the last few weeks I wrote down cards in my notebook, which I then made into cards and then after a few days reviewed. I could answer almost all of those cards, setting them to be reviewed 20 days later [*] and the other ones, where I had a few tiny errors I set to be reviewed in 5 days.</p>
+<p>[*]\: I just like to take four times the normal graduating interval, simply because the ratio in the standard settings was also 1 : 4 and it has worked well for me.</p>
+<p>Furthermore by increasing the graduating interval for new cards you can skip one whole review cycle, if you where to start from the standard settings. Because with standard settings your graduating interval would be 1 day for GOOD, then 3 days and then 5 days if you chose GOOD on both occasions. Thus if your graduating interval is 5 days from the start, you skip one reviewing of that card. If you do this for all new cards you can lessen your review load from new cards immensely, since these account for a majority of your reviews with the standard settings. At least for a while when you are starting with your deck, as well as as long as you do not go crazy by adding to many new cards in a short time span resulting in an ever increasing daily review count until you crash.</p>
+<h4><a href="#table-of-contents">Adjust the Failure Settings</a></h4>
+<p>I personally first started to adjust only my graduating interval settings and only then noticed, that I should probably adjust my failure settings as well. Since what applies for your new cards applies to your failures as well. You don't need your failures in maphy to start with the standard failure graduating interval of one day, you want it to be at least similar to your new cards, normally even higher since you already reviewed this card for a while.</p>
+<p>To adjust this you can set the minimum interval for a failure in you deck settings, I like this minimum interval to be like my intervals for new cards, which is why it is 5 days in my settings, which has worked well for me for intervals in the range of one month.</p>
+<p>Especially for cards you had on a long interval e. g. &gt; 3 months you do not want to start again with that card from 1 day or even 5 days, filling up your review queue with unnecessary reviews [*]. I thus recommend to set your <em>new interval after failure</em> interval to something other than 0%. I have found that 20% [**] or 25% percent works well for me. With 20% you can notice a difference once the interval is higher than five plus one (i. e. 6) times your minimum interval, thus with my settings this would be 30 days. Thus for (roughly) every month in your cards state, the failure will get an additional 6 days. For 25% you would notice a difference after <em>(4 + 1) ⋅ minimum interval</em>, that is, after 25 days. The new failure interval would thus gain five days on it's new interval for every 25 days on it's previous interval.</p>
+<p>[*]\: Most of the time, most of these failures were because I didn't quite remember one detail right and not because I couldn't remember at all. Thus for me these were quite annoying and I was always tempted to just skip them when I saw them, because I knew I knew them. But just skipping them without reviewing them is dangerous since it is far less effective than active recall, see the <a href="https://en.m.wikipedia.org/wiki/Generation_effect">Generation Effect</a>.</p>
+<p>[**]\: As mentioned in a previous footnote, I took this value from the above mentioned Anking video, and it just worked well for me.</p>
+<h4><a href="#table-of-contents">Spacing out Your Reviews</a></h4>
+<p>As I talked about in the <a href="#learn-first-review-latertoc">learn first review later</a> section, unless you have a special need, it is often enough to write down the cards while learning, and then put them in the back of the review queue. With the knowledge that before long they will be in your review queue and thus in your memory for as long as you keep up with your reviews. This knowledge will make the next thing I want to talk about, which is spacing your new cards equally over a certain time period and in conjunction with that setting an upper limit for new cards, far more palatable.</p>
+<p>The intent with spacing your cards is to avoid waves of spikes in your review queue which can be seen even after a year or so. Because if, for example, you were to write and learn 50 new cards on the weekend and then do no new cards for the next few weeks, you would get a wave of higher daily review counts which slowly flattens out or dissipates. This is due to you failing some of them and marking others as easy, distributing them more evenly in your review queue.</p>
+<p>Spacing out the new cards is more a personal preference than a must do, because you could simply power through these spikes or keep an eye on your review count and set an appropriate upper limit on daily review counts. I personally prefer to space out the reviews, but I think there are also additional reasons, which make this stratagem slightly better.</p>
+<p>For example, spacing out the burden of new cards and new reviews (alone as well as in conjunction with avoiding review spikes), allows Anki to be more easily integrated as a hobby as well as as a hobby into a daily schedule. Avoiding the review spikes also helps to avoid review fatigue and thus helps in keeping up with your daily reviews.</p>
+<p>A possible downside is that maybe you have learned so much and added so many cards, that the cards will appear after you have already forgotten and you have to fail these cards. Thus reducing your retention efficiency and increasing your workload since they would thus come up again earlier, increasing your daily review amount. It is thus important to keep an eye on the backlog of new cards and adjust the amount of daily new cards. But as a rule it is generally better to space the reviews than to have spikes of new cards. You could, for example, make new cards on the weekend and set your daily new cards to be as many as it takes to finish the cards you made that weekend until the next weekend where you plan to add new cards to your queue.</p>
+<p>A possible workaround for some problems is identifying key cards and putting them into a special deck you learn alongside your usual deck, combined with willingly putting some cards back, in the knowledge that you will have to relearn them at some point. What I mean with a special deck is for instance a sub-deck of the relevant deck [*] or a filtered deck to adjust the settings. This allows them to come up quicker, or simply puts them higher up (sooner) in the new cards queue.  </p>
+<p>This is for example especially useful for when you create cards as a tool for learning [**] and keep key cards (e. g. key formulas) to learn for tests. Relearning the cards you put aside when you are not learning as much for that subject or when you do not have time to make new cards, because you are so busy with other things. This for me is often the case with the rhythm of lecture and no-lecture periods of a semester whilst studying at university.</p>
+<p>[*]\: With the V2-scheduler a sub-deck becomes an even better option, since while learning the sub-deck are integrated into the parent deck, such that you won't notice the difference (they used to come up in the order of the sub-decks themselves and not shuffled), except for the different settings.</p>
+<p>[**]\: What I mean here is the act of creating cards aiding you in learning [***] and not reviewing.</p>
+<p>[***]\: For example, the same way making cheat sheets does, although usually more so, since you also, for instance, try to put a step by step summary of a proof as well as a summary of certain concepts on cards, instead of just formulae and definitions.</p>
+<h4><a href="#table-of-contents">My Maphy Settings</a></h4>
+<p>You can adjust the settings for each deck. To do this on Anki-Desktop choose a deck and then click on <em>Options</em> on the bottom. In Anki-Droid click on the review number on the right hand side of the deck name in your collection menu → tap the three vertical dots in the top right corner and choose options.
+The following settings and names are tested for Anki v2.1.15.</p>
+<p><strong><em>New cards</em> tab:</strong>
+| Name of Setting | My Example Settings | Comment |
+| :-              | :-:                 | :-      |
+| Steps (in minutes) | 1 10 | [1] |
+| Order | … | [*] |
+| New cards/day | ∈ [0, 10] | [2] |
+| Graduating interval | 5 |  |
+| Easy interval | 20 |  |
+| Starting Ease | 250 | [**] |
+| Bury related new cards until the next day | ✔ | [3] |</p>
+<p>[1]\: Currently I do not really care for these settings, I just like to do one active recall before I set it to graduate. For this I like the active recall to be pretty soon first and then one after a short while, i. e. 1 hour, making my ideal settings <em>1 5 60</em>, but <em>1 10</em> works as well, since I already learned the material well, and I do not want to have non graduated cards the next day because I forgot to check Anki again that day.</p>
+<p>[2]\: I have found that a good upper limit for how many new maphy cards I should do per day —with the standard settings— is ten cards, thus this number can probably be increased. Although it slowly spiraled out of control with ten cards at that time, so ten with the above settings should now be quite comfortable.</p>
+<p>[3]\: I think burying related new cards until the next day, is better than seeing related cards quickly after each other, since they can spoil each other, but for my card types this is usually not a problem, since I input them in an order where they don't spoil each other.</p>
+<p><strong><em>Reviews</em> tab:</strong>
+| Name of Setting | My Example Settings | Comment |
+| :-              | :-:                 | :-      |
+| Maximum reviews/day | 9999 | Try to do all the reviews every day |
+| Easy bonus | 130 | [**] |
+| Interval modifier | 100 | [1] |
+| Maximum interval | 36500 | [2] |
+| Bury related reviews until the next day | ✔ | [3] |</p>
+<p>[1]\: My retention rate is around 90%, if your retention rate deviates from your desired retention rate, you should adjust this. See <a href="https://apps.ankiweb.net/docs/manual.html#reviews">this</a> section in the manual.</p>
+<p>[2]\: Please don't do anything like capping your reviews at something below one year, actually do not cap your maximum interval, to anything below five years, these settings are supposed to be for math and physics not something like medicine, where I could understand that you really want to make sure you are remembering life critical information. If you've done everything right with your card design, there is no need for any cap, at that stage, you know, whether you will remember stuff for that long, or you can manually fine tune the settings, so that you are pretty sure you will remember the information at that point. If all else fails, you can always just look up the information again. Setting a cap to your reviews can increase your reviews dramatically once your review queue reaches that point, and as I said, unless maybe you have life critical information to retain, not trusting in the spacing effect here can lead to vast increases in your review queue (depending on how much you put in there, and what the limit is).</p>
+<p>[3]\: See related above, with the exception that here you don't have a determined order in which the cards appear, thus you can't negate not burying related cards with the order in which you added the new cards.</p>
+<p><strong><em>Lapses</em> tab:</strong>
+| Name of Setting | My Example Settings | Comment |
+| :-              | :-:                 | :-      |
+| Steps (in minutes) | 10 |  |
+| New interval | 20 |  |
+| Minimum interval | 5 |  |
+| Leech threshold | … | [*] |
+| Leech action | Tag Only | [1] |</p>
+<p>[1]\: These leech actions are more relevant for vocabulary cards, where suspending these cards saves you a lot of time and you can always just learn them in a better context, or just pick them up without Anki at some point. Usually with maphy subjects you don't want to find and unsuspend your lovingly and painstakingly created cards. If they are an annoyance you can just suspend them while reviewing or mark them to be reworked.</p>
+<p>[*]\: Choose whatever fits you best.</p>
+<p>[**]\: I do not, as of yet, like to change the ease settings, since they worked well for me.</p>
+<p>The other options under the <em>General</em> tab are not really relevant to maphy cards, which is why I ignore them here.</p>
+<h4><a href="#table-of-contents">Rescheduling Cards</a></h4>
+<p>The Anki settings you set should be as fitting as possible but you should also not stress to much about it, if it does not work for some cards, since there is also always the option to manually set a new interval for a card, which leaves your card history unchanged and only changes the current state of the card [*] but that should usually not interest you. Manually setting a new interval can be done easily in Anki as well as on Anki-Droid since v2.9.</p>
+<details><summary>[\*]\: </summary>
+
+> The card’s revision history is not cleared when rescheduling: rescheduling changes the current state of a card, but not its history. If you want to hide the history, you will need to export your notes as a text file, delete the notes, and then import the text file again, creating new notes.
+
+Reference: [Anki manual](https://apps.ankiweb.net/docs/manual.html#other-menu-items) (Retrieved: 2019-10-26)
+</details>
+
+<p><br></p>
+<p>Anki-Desktop (tested for Anki v2.1.15):
+When reviewing a card press <code>b</code> to see the card you were reviewing in the card browser. Here either right click on the card and choose <code>Reschedule…</code> (either by clicking on it or by pressing <code>r</code>) or by using the keyboard shortcut <em>Ctrl + Alt + R</em> which you can find under the <em>Cards</em> tab. Then choose <em>Place in review queue with interval between:</em> and choose the lower and upper bound of the interval from which the new intervals are randomly chosen for each selected card.</p>
+<p>Anki-Droid (tested for Anki-Droid v2.9.1):
+First open <em>Preferences</em> [*] → <em>Reviewing</em> → under <em>Display</em> find <em>Custom Buttons</em> → find the reschedule option and set it to be anything but deactivated. Then whilst reviewing the option should come up somewhere in the top right or under the menu in the top right.</p>
+<p>[*]\: In the main menu, i. e. under the tab that opens when you swipe from the left edge to the right, or while viewing the decks, in the menu when you tap the symbol in the top left.</p>
+<h2><a href="#table-of-contents">The Efficiency of Proofs</a></h2>
+<p>Proofs are an important part of learning in math and physics, and making cards disassembling a proof to review it efficiently, gives you a further incentive to spent the time really understanding the proof.</p>
+<p>That being said, normally one has not enough time for every proof and even if one had, one should probably free the opportunity cost of those cards for other other more important cards. With this opportunity cost I mean the time necessary to create and review these cards, as well as the amount of additional work and space on cards needed to make well defined cards in the presence of other similar cards.</p>
+<p>I imagine the importance of proofs depends highly on your point in your journey of learning a subject. That is, what have you learned before, which aspects are already well done on other cards, which things are new to you and which things do you not understand on first glance or which have taken you a while to understand. All these present good opportunities to make cards which review these items as well as the underlying understanding.</p>
+<p>Thus on the one hand you should, as a rule of thumb, go through every proof, which does not seem clear. Just for your own understanding. On the other hand you will want to go through every proof to check whether it offers a good opportunity to review and reinforce other theorems, formulae, definitions and concepts.</p>
+<p>Leaving everything else aside for the moment, proofs are a great source for well defined cards. They are the maphy equivalent to sentence mining for language learning (in my humble opinion), because they provide the context, in which a select few steps make sense and in which you need to apply the right theorem correctly.</p>
+<p>If you combine this ease for making well defined cards with a <a href="#benefits-of-a-fixed-structuretoc">standardized structure</a> for your proofs, you can cut down on the mental strain of designing your cards immensely.</p>
+<p>After you decided on a structure for your proof cards there is usually far less need to think about the best formulation, card design and possible later memory interference. Since you can use one template for all your proofs and you don't need to come up with context clues for your proofs (except for when you want to distinguish different paths of a proof or distinguish similar proofs from each other. Compare the <a href="#benefits-of-a-fixed-structuretoc">structure section</a> for an estimate of work involved.</p>
+<p>Usually you then only need to understand them and write down a version of the proof for your cards which usually aids me in understanding the proof, as well as forces me to understand every minutia of the proof. The latter depends on how you make your cards, which I will discuss later in the section on the structure of cards.</p>
+<p>Thus proof cards are far easier to produce than doing just theorems, formulae and definitions, while trying to have similarly high levels of well definedness. At least that was my experience after I spent a considerable amount of time trying to be able to handcraft a passable version of such cards.</p>
+<p>It is generally important to know where things come from and at least have a general idea of how theorems come to be. This understanding can often make the alternative of making cards asking for the precise conditions for a theorem obsolete. I used to make a lot of these kinds of cards and they were rather annoying. Mostly because I thought them boring and useless as well as not well defined, since you could give a lot of different conditions and later after I learned new things, I did not know anymore what was asked of me. Depending on the person this can thus be a huge or small time saver. Nonetheless you will have a better grasp on the conditions to apply a certain theorem.</p>
+<p>One major factor of the efficiency of proof cards, is the importance of proofs themselves. Without this we could and should be far more selective in our choice of proofs, and we still should be selective, but in general the benefit of learning, reviewing proofs, is worth it, as long as the proof has at least one interesting part. Maybe not for really long proofs though. These should be worth it either because of what is proven, or because they have several interesting tidbits. If it is a painfully annoying construction, you might be better served to just skip them after working through them at least once, so that you may look them up whenever you need it. Remember the discussion in a <a href="#give-your-memory-some-credittoc">previous section</a> about learning once and then looking up stuff is a valid technique.</p>
+<p>In my experience learning languages, I noticed, that the knowledge you gain/keep from doing word to word translation vocabulary cards does not translate well to actual language proficiency and is usually far harder to keep (lower retention rates and longer reviewing time (per card or in total)).</p>
+<p>Similarly in maphy it is far better to have cards that use a context for active recall. Next to facilitating the creation of well defined cards, they also make you motivated and show how the item is relevant. Furthermore they also act as actual examples. In the case of proofs you also know the actual proof, the worth here obviously depends on the proof or theorem itself. Sometimes cards are worth it solely for the proof, other times you could have done the proof the first time easily by yourself. However they give you a good opportunity to ask for an item. For example proofs that are similar to other proofs you have already seen or done a lot of times before, but where the items used are slightly different.</p>
+<p>Depending on the level of well-definedness in your previous cards, you can expect less time learning the cards themselves, since the proofs are usually well defined.</p>
+<p>You get or retain more of a feeling for moving things in your head, since you don't learn/remember theorems as isolated packages, but already in action.</p>
+<p>Working through proofs and understanding them is also an avenue of strengthening your ability to put things together, since it works as an exercise in understanding and usually by using the previously learned material.</p>
+<p>Proofs are also very good for reinforcing theorems, since you tend to use a theorem more than once in the proof of another theorem. You therefore review the same theorem or formula in slightly different circumstances. What I especially like about this, is that, in my opinion the reviews of these cards reinforce the understanding of the theorem more than they interfere with each other. What I mean with this is this is the following.</p>
+<p>Multiple cards, which are exactly the same, are equivalent to having one card with an equivalent interval setting. This is still true for cards with different front sides and the same answer but where the front side does not introduce a new angle from which to view the card. For example a simple rephrasing of the other cards. However a set of cards with the same answer on the back, where the front side asks the answer from a different angle for each card, will increase your understanding of the answer. How much and in what way obviously depends on the formulation of the front card. These cards however, reinforce each other. Even if you manage to have front sides which don't have any connection to each other, you still strengthen the memory of the back side, increasing the probability of recall for the other cards with the same answer [*].</p>
+<p>[*]\: Or at least that is what I assume, I only have a passing understanding of memory to infer this from.</p>
+<p>However, if a theorem is used often, even if it is only used in slightly different ways, you will most likely have occasions where two situations are exactly the same. Therefore proof cards lose their efficiency the more proofs you add to your Anki collection. But they are generally never useless, since you still learn the proof. An example would be two poems which have the same line. If you where to learn these poems with overlapping clozes, you would have two cards with the same answer, but the front would be different and you would still learn the position and what comes at which line or position of the respective poems.</p>
+<h4><a href="#table-of-contents">Why I Still Use Formulae and Definition's Cards</a></h4>
+<p>Now I would argue, that you could substitute a lot of cards for proofs and definitions just by proof cards in which they appear. This would add an additional layer of efficiency to cards per concept. Sometimes I already do this. Often however, I still make them where they are not necessarily needed.</p>
+<p>With this I do not include those times, where a proof is not worth it, the end result however is and where the end result is also not used somewhere else. Now that I look back on this construction, this would be a perfect example for a card which should not be made anyway, since there are no connections, it is an isolate. As Michael Nielsen has <a href="http://augmentingcognition.com/ltm.html">already argued</a> with his orphan cards, these are not good opportunities for Anki cards.</p>
+<p>What this probably shows, is that you can substitute every card asking for a formula or definition by a proof where they are asked. However I still like to make them wherever they can be easily made well defined. If this is not the case you can probably use proofs to make well defined cards for them.</p>
+<p>Now I would argue that it can be still be beneficial if not necessary to make these cards. I rely here on the assumption that proof cards usually ask the formulae in a certain circumstance, thus aside from learning what comes next in a proof, you also practice to apply the formulae or definition in a certain circumstance. This I would argue is often different enough from asking the formula or definition out of context in it's abstract form. Thus these two question help to make the other question easier and increase their retention efficiency by adding additional connections. All this without making the other card obsolete, since they are still asking different answers. As well as without asking the same answer in a way without added value by the different way in which it is asked. Since in the case of the proof you learn the proof, and in the case of the definition or formula can be useful to ask it in an abstract way. However in the case of the latter, that is the formulae or definitions, I am not really sure. I probably just like to do it because these cards are often easy to do and because I think more won't hurt, at least in this case. And so far they have not annoyed me, but long term testing has yet to occur.</p>
+<h4><a href="#table-of-contents">Thinking About Additional Information of Definitions</a></h4>
+<p>Often times definitions have a long history and we only see the end result of a lot of work. Think about what makes a definition good. It needs to make sense, be at best intuitive as well, catch all the edge cases, and do and describe what we want it to do. Or sometimes, just make theorems shorter, etc. One can put this understanding, or at least try to ankify it as well, but in my humble opinion, it usually is not worth it, and it is best to trust that you won‘t forget, it or that the understanding will be “saved“ in all the proofs involving the proofs we do. This comes back to what was discussed in the section on <a href="#learn-first-review-latertoc">learning first</a>.</p>
+<p>I don‘t like doing examples in Anki, because they are hard to do and after a short while they appear to me as meaningless, which leaches me of all my motivation. I would argue in almost all cases, that proofs would catch the understanding, that is proofs would suffice. If they were to not suffice, it would just mean you have to look it up. Then you were to know, that you would need to make an extra card for it, which also means, you only need a few context clues to tell you exactly what you want on a card. I would further argue that those cases, where you do not notice you did not know it, because you forgot a part of the understanding of a definition, are for one not worth it and second, are hard to imagine. Because as a good user of Anki/SRSs‘s and reader of the 20 rules (of formatting knowledge) we would always first thoroughly understand something, before we commit it to cards, or in the case of time constraints, we would always have to come back anyways and we would also lack the right to complain.</p>
+<h2><a href="#table-of-contents">Card Design</a></h2>
+<h4><a href="#table-of-contents">Benefits of a Fixed Structure</a></h4>
+<p>It is beneficial to have fixed structures for your formulae, definition and proofs. This allows them to be quickly produced and the uniform appearance helps to quickly realize what is asked —it helps well definedness. Furthermore it allows a shorter formulation of cards, since position on the card that comes with convention can be used to convey information, for which otherwise a lot of text fluff [*] would be needed.</p>
+<p>[*]\: Words like "is", "a", "Defintion:", "Assumptions:", etc.</p>
+<p>But I would also recommend to have a note type for both 'front → back' cards, as well as cloze deletion cards, which are open and flexible. I would, for example, imagine a field for the front and one for the back, but without needing to force your card design to fit into a number of fields of your note type, in order to achieve a certain goal. The outcome for these cards should be mostly determined by the structure in the main field.</p>
+<p>Having both structured notes that force a certain design, as well as an open note format, should allow the majority of your cards to be made as these structured cards. For the odd card out, where it is hard to fit it into the structure, you can just use a more flexible note type. Since flexible types are supposed to be in the minority their effect due to possible inefficiency should be limited. But they offer efficiency in handling any outliers.</p>
+<h4><a href="#table-of-contents">Thinking About the Steps of Your Proofs</a></h4>
+<p>In this line of thinking it is beneficial to think about the steps of your proof. Having a kind of standard in which you progress can help your proof cards well-definedness tremendously, since otherwise you do not quite know what comes next. Of course if you think five steps forward and only one step is expected this is not harmful, but it is also not efficient. I think having your proof steps be as atomic as possible is, if not the best way to go about it, a very efficient one. For one, it has the benefits of simplicity as detailed in <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">rule number 4</a>. On the other hand the rules underlying this convention are rather easy to grasp as well. In addition to this it fits very well into the design described in a <a href="#tip-on-formatting-proofs-in-ankitoc">further section</a>, since it reduces the amount, that needs to fit into the last column of the table described there. For me this atomicity resolves to having one property or theorem used.</p>
+<p>Furthermore with this I usually mean that simple rearranging of equations and solving a single equation for a quantity is usually a single action, depending of course on what you are doing and at which level you are at. For example if you are in school and do not feel familiar with solving equations or if you are proving a theorem in abstract algebra and you really want to show how each assumption or property is used. On the other hand if this is not the focus of the proof, and you are quite familiar with this I generally do this in one step. Usually it is clear by the theorem and the number of steps of the proof for the first few steps, or the previous steps for later steps in the proof, how simple rearranging steps are.</p>
+<h4><a href="#table-of-contents">Showing Steps</a></h4>
+<p>As I have hinted at in the previous section, I highly recommend showing all previous steps in the proof, the number of steps in the whole proof as well as the operator which shows how each cloze relates to each other. For this I can refer to <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">rule 17</a> (Redundancy does not contradict minimum information principle), which explains it better than I ever could, as well as lots of experience, since of course I had to fail first before understanding what <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">rule 17</a> implies.</p>
+<p>As I have already described previously, knowing the number of steps for each proof and having a rough idea for what is expected with each step, helps tremendously in knowing the atomicity of steps expected. It also increases the well-definedness of the card, without making much of a difference in giving away the answer, see the <a href="#harder-is-not-always-bettertoc">Harder Is Not Always better</a> section.</p>
+<p>For showing the previous steps I noticed, that if you do not show it, the card becomes immensely harder but most of all annoying. This is because for the current step you usually need to have the previous steps in mind, otherwise it is more memorizing than you want and you essentially do not just actively recall only the current step but, if not all, then a lot of the previous steps as well. Thus ruining the simple aspect of the cards described in <a href="https://www.supermemo.com/en/archives1990-2015/articles/20rules">rule 3</a> and making the card much harder without any real gain, since it is just inefficient repetition [*].</p>
+<p>[*]\: Equal to lowering the ease of your cards by a lot leading to a far higher review burden.</p>
+<h4><a href="#table-of-contents">Tip on Formatting Proofs in Anki</a></h4>
+<p>I really like the format for equations and proofs you can achieve with various methods of aligning them. However in Anki this is impossible to do with cloze cards, since the cloze needs to surround the whole LaTeX or MathJax field. A nice workaround for this is to use tables. For my proofs or in general for these purposes I use a 4 column table. I use these in general since empty fields do not get in the way and they leave room for easy adjustments later on. I can highly recommend <a href="https://ankiweb.net/shared/info/1237621971">Add Table</a> add-on to quickly add tables.</p>
+<p>I personally really like the "pfp - style" table style of this add-on, however for proofs I want each line to be the same thus I remove the blue first line and use the style of the other ones.</p>
+<p>To use my style simply go to <em>Tools</em> → <em>Add-ons</em> → click on <em>Add Table</em> → select <em>Config</em> on the right hand side and add this code in between the the other table styles.</p>
+<div class="highlight"><pre><span></span><code>&quot;pfp-variant - style&quot;: {
+    &quot;BODY_STYLING&quot;: &quot; align=&#39;{0}&#39; style=&#39;width: {1}%; padding: 5px; border-bottom: 1px solid #B0B0B0&#39; &quot;,
+    &quot;HEAD_STYLING&quot;: &quot; align=&#39;{0}&#39; style=&#39;width: {1}%; padding: 5px; border-bottom: 1px solid #B0B0B0&#39; &quot;,
+    &quot;TABLE_STYLING&quot;: &quot; style=&#39;font-size: 95%; width: 100%; border-collapse: collapse;&#39; &quot;
+},
+</code></pre></div>
+
+
+<p>As you can see this is a simple adjustment, which you can also easily do directly for the "pfp -style". You should then be able to select your new style when using the add-on in the editor [*]. Of course you can easily customize and add your own table style this way as well.</p>
+<p>[*]\: I did not need to restart Anki for the added styling to be selectable in the editor, but if it does not work for you it might help.</p>
+<p>You may notice that anything you enter in the first line of some of these table styles (including the above style) will be bolded, because it is in the table header. You can simply counteract this by selecting the text and toggling the bold option of Anki's editor.</p>
+<h4><a href="#table-of-contents">Adding Sources to Your Card</a></h4>
+<p>My original workflow with Anki in relation to maphy, was to get my hands on an electronic version of the source document, often a PDF, and use a snipping tool to make screenshots in order to create my cards. Probably as a relict of this, even after my workflow got similar to the one described below, I always added an image of the page I got it from in a hint field at the bottom of the card.</p>
+<p>If you have the time to do this, I think this is very helpful if you use it, since it can save you the time to find the section in the book, or, even if you know the page you need to look up, you need to spend the time to look up the page. This also makes it more likely you will look something up if you do not understand it, and not just ignore it and hope you will get it later, i. e. brute force memorize for now. The latter should not be a problem, since as a good student we will always take the time to look something up, but it makes it more amenable.</p>
+<p>As I hinted at though, it is a time investment, and depending on your workflow, i. e. if you are working through a book page after page, or need to find different sections from different books, this can range from not much time at card creation to a considerable amount.</p>
+<p>Another point I have not mentioned is, that it allows you more flexibility. I often found myself thinking too hard on how I would get a nice image for the sources field or even eschewing books in favor of looking it up online or finding other sources, which usually was one of the biggest time sinks in the whole card creation process.</p>
+<p>Thus I personally recommend to also write down, in a quick note, the page number of where you got the information from, when you formulate your Anki cards and then put the book name and the page number instead of the images in the sources page. This is especially helpful, since you can quickly note down the page number, taking no time at all. Compared with specifying all the pages your source field would need to be helpful, often also adding pages before or after, and then adding the images to your card, I think this can save a reasonable amount of time.</p>
+<p>In general, I thus think the time saved by eschewing it is worth it, since you can use this time for more learning, reviewing and thus more Anki cards. Especially since I have rarely found myself using these fields, as long as I learned the thing before. For me, having to look up the source field, was often an indicator, that I did not learn enough and that I had yet to understand more first.</p>
+<p>As an aside, this also reduces the size of your collection, now only being dictated by the size of the occasional image you can put to good use, the size and amount of your LaTeX images, or by the text size if you use MathJax and in general.</p>
+<h2><a href="#table-of-contents">My Current Workflow</a></h2>
+<p>Now on to my current card design. Regarding all the LaTeX stuff, I tried to write a guide you can follow to get LaTeX with Anki to work, you can find it <a href="https://unhewn-thoughts.org/guide-on-using-latex-xetex-luatex-with-anki">here</a>. Furthemore all example images are taken as screenshots on Anki-Droid and the LaTeX images are <code>.svg</code> files generated, as described in the linked article, with LuaTeX.</p>
+<h3><a href="#table-of-contents">Card Designs</a></h3>
+<h4><a href="#table-of-contents">Example: Maphy-Basic</a></h4>
+<details><summary><b>Fields</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="err">Front-Simple-Text</span>
+<span class="err">Meta-Errata</span>
+<span class="err">Front-Preface</span>
+<span class="err">Front-Orientation-Math</span>
+<span class="err">Front-Orientation-Physics</span>
+<span class="err">Front-Centered</span>
+<span class="err">Front-Hint</span>
+<span class="err">Back-Simple-Text</span>
+<span class="err">Back-Extra</span>
+<span class="err">Back-Hint</span>
+<span class="err">Back-Full-Text</span>
+<span class="err">Back-Image-Sources</span>
+<span class="err">Meta-ForSortingField</span>
+<span class="err">Meta-Changelog</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Front Template</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{#Front-Preface}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Front-Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Front-Preface}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+{{#Front-Orientation-Math}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-math</span><span class="p">&gt;</span>{{Front-Orientation-Math}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Front-Orientation-Math}}
+{{#Front-Orientation-Physics}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-physics</span><span class="p">&gt;</span>{{Front-Orientation-Physics}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Front-Orientation-Physics}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text-preface</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{#Front-Centered}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">definition</span><span class="p">&gt;</span>{{Front-Centered}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Front-Centered}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">simple-text</span><span class="p">&gt;</span>{{Front-Simple-Text}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{#Front-Hint}}
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Front-Hint}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Front-Hint}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Styling</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span> <span class="p">{</span>
+ <span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+ <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">orientation-math</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#DC322F</span><span class="p">;</span>
+ <span class="err">&lt;!--</span><span class="n">Physics</span><span class="p">:</span> <span class="kc">color</span><span class="o">:</span> <span class="mh">#268BD2</span><span class="p">;</span> <span class="n">Math</span><span class="p">:</span> <span class="kc">color</span><span class="o">:</span> <span class="mh">#DC322F</span><span class="p">;</span><span class="err">--&gt;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">orientation-physics</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#268BD2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">preface</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">text-preface</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="n">Justified</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">definition</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hint</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">simple-text</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">answer</span> <span class="p">{</span>
+ <span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">theorems</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">extra</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">full-text</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">full-text-theorems</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sources</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">changelog</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Back Template</b></summary>
+
+<div class="highlight"><pre><span></span><code>{{FrontSide}}
+<span class="p">&lt;</span><span class="nt">hr</span> <span class="na">id</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">answer</span><span class="p">&gt;</span> {{Back-Simple-Text}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{#Back-Extra}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">extra</span><span class="p">&gt;</span> {{Back-Extra}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Back-Extra}}
+{{#Back-Hint}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Back-Hint}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Back-Hint}}
+{{#Back-Full-Text}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">full-text</span><span class="p">&gt;</span> {{hint:Back-Full-Text}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Back-Full-Text}}
+{{#Meta-ForSortingField}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Meta-ForSortingField}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Meta-ForSortingField}}
+{{#Back-Image-Sources}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Back-Image-Sources}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Back-Image-Sources}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Code</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="n">Front</span><span class="o">-</span><span class="n">Simple</span><span class="o">-</span><span class="nc">Text</span><span class="err">:</span><span class="w"></span>
+<span class="n">How</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">reduce</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">resistance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">resistor</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">resistor</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">parallel</span><span class="p">,</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="k">large</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">resistor</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="vm">?</span><span class="w"></span>
+
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">{</span><span class="n">R_1</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">{</span><span class="n">R_2</span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">R_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">_</span><span class="err">\</span><span class="n">_</span><span class="err">\</span><span class="n">_</span><span class="err">\</span><span class="n">_</span><span class="w"> </span><span class="err">\</span><span class="p">;</span><span class="w"> </span><span class="n">R_1</span><span class="w"> </span><span class="err">⇒</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">99</span><span class="w"> </span><span class="n">R_1</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="n">Front</span><span class="o">-</span><span class="n">Orientation</span><span class="o">-</span><span class="nl">Physics</span><span class="p">:</span><span class="w"></span>
+<span class="n">Elektronics</span><span class="w"></span>
+
+<span class="n">Back</span><span class="o">-</span><span class="n">Simple</span><span class="o">-</span><span class="nc">Text</span><span class="err">:</span><span class="w"></span>
+<span class="err">\</span><span class="p">(</span><span class="mi">100</span><span class="err">\</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">Meta</span><span class="o">-</span><span class="nl">ForSortingField</span><span class="p">:</span><span class="w"></span>
+<span class="n">The</span><span class="w"> </span><span class="n">Art</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">Electronics</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="n">rd</span><span class="w"> </span><span class="n">edition</span><span class="p">)</span><span class="err">:</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Images</b></summary>
+
+<b>Front:</b>
+<img alt="Maphy-Basic example front side" src="/maphy/images/Maphy-Basic-Example-A-Front.png">
+<b>Back:</b>
+<img alt="Maphy-Basic example back side" src="/maphy/images/Maphy-Basic-Example-A-Back.png">
+
+</details>
+
+<h4><a href="#table-of-contents">Example: Maphy-C-LHS-Op-Name-Text</a></h4>
+<details><summary><b>Fields</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="err">Text</span>
+<span class="err">Meta-Errata</span>
+<span class="err">Orientation-Math</span>
+<span class="err">Orientation-Physics</span>
+<span class="err">Preface</span>
+<span class="err">LHS</span>
+<span class="err">Operator</span>
+<span class="err">Name</span>
+<span class="err">Hint-Front</span>
+<span class="err">Extra</span>
+<span class="err">Hint</span>
+<span class="err">Image-Sources</span>
+<span class="err">Meta-ForSortingField</span>
+<span class="err">Changelog</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Front Template</b></summary>
+
+<div class="highlight"><pre><span></span><code>{{#Orientation-Math}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-math</span><span class="p">&gt;</span>{{Orientation-Math}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Orientation-Math}}
+{{#Orientation-Physics}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-physics</span><span class="p">&gt;</span>{{Orientation-Physics}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Orientation-Physics}}
+{{#Preface}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+{{/Preface}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">lhs</span><span class="p">&gt;</span>{{LHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">operator</span><span class="p">&gt;</span>{{Operator}} {{#Name}}{{Name}}{{/Name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text</span><span class="p">&gt;</span>{{cloze:Text}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{#Hint-Front}}
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Hint-Front}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Styling</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span> <span class="p">{</span>
+ <span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#586E75</span><span class="p">;</span>
+ <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FDF6E3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">img</span><span class="o">[</span><span class="nt">src</span><span class="o">*=</span><span class="s2">&quot;latex&quot;</span><span class="o">]</span> <span class="p">{</span>
+  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">anki</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">120</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">mobile</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">120</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">hr</span> <span class="p">{</span>
+    <span class="k">border</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">background</span><span class="p">:</span><span class="kc">black</span><span class="p">;</span>  <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">orientation-math</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#DC322F</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">orientation-physics</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#268BD2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">orientation</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">orientation</span> <span class="p">.</span><span class="nc">mobile</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="p">.</span><span class="nc">preface</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">operator</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hint</span> <span class="p">{</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">text</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">extra</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Sans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sources</span> <span class="p">{</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">cloze</span> <span class="p">{</span>
+<span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+<span class="k">color</span><span class="p">:</span> <span class="kc">darkorange</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nightMode</span> <span class="p">.</span><span class="nc">cloze</span> <span class="p">{</span>
+<span class="k">color</span><span class="p">:</span> <span class="kc">olive</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Back Template</b></summary>
+
+<div class="highlight"><pre><span></span><code>{{#Orientation-Math}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation</span><span class="p">&gt;</span>{{Orientation-Math}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Orientation-Math}}
+{{#Preface}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+{{/Preface}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">lhs</span><span class="p">&gt;</span>{{LHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">operator</span><span class="p">&gt;</span>{{Operator}} {{#Name}}({{Name}}){{/Name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text</span><span class="p">&gt;</span>{{cloze:Text}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{{#Extra}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">xxtra</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">xxtra</span><span class="p">&gt;</span> {{Extra}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Extra}}
+
+{{#Hint-Front}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Hint-Front}}
+
+{{#Hint}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Hint}}
+
+{{#Meta-ForSortingField}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Meta-ForSortingField}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Meta-ForSortingField}}
+
+{{#Image-Sources}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Image-Sources}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Image-Sources}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Code</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="nc">Text</span><span class="err">:</span><span class="w"></span>
+<span class="err">{{</span><span class="nl">c1</span><span class="p">:</span><span class="err">:</span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">{</span><span class="mi">4</span><span class="n">πε_0</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">qQ</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">ς</span><span class="o">^</span><span class="mi">2</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">hat</span><span class="w"> </span><span class="n">ς</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="err">}}</span><span class="w"></span>
+
+<span class="n">Orientation</span><span class="o">-</span><span class="nl">Physics</span><span class="p">:</span><span class="w"></span>
+<span class="n">Elektrostatics</span><span class="w"></span>
+
+<span class="nl">Preface</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">Q</span><span class="err">\</span><span class="p">)</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">charge</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="nl">LHS</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">F</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="nl">Operator</span><span class="p">:</span><span class="w"></span>
+<span class="o">=</span><span class="w"></span>
+
+<span class="nl">Name</span><span class="p">:</span><span class="w"></span>
+<span class="n">Coulomb</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">law</span><span class="w"></span>
+
+<span class="nl">Extra</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">hat</span><span class="w"> </span><span class="n">ς</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{\</span><span class="n">vec</span><span class="w"> </span><span class="n">ς</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">ς</span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">vec</span><span class="w"> </span><span class="n">ς</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">vec</span><span class="w"> </span><span class="n">r_Q</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">\</span><span class="n">vec</span><span class="w"> </span><span class="n">r_q</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="n">Meta</span><span class="o">-</span><span class="nl">ForSortingField</span><span class="p">:</span><span class="w"></span>
+<span class="n">Griffiths</span><span class="o">-</span><span class="nl">ED</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="w"></span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Images</b></summary>
+
+<b>Front:</b>
+<img alt="Maphy-C-LHS-Op-Name-Text example front side" src="/maphy/images/Maphy-C-LHS-Op-Name-Text-Example-A-Front.png">
+
+<b>Back:</b>
+<img alt="Maphy-C-LHS-Op-Name-Text example back side" src="/maphy/images/Maphy-C-LHS-Op-Name-Text-Example-A-Back.png">
+
+</details>
+
+<h4><a href="#table-of-contents">Example: Maphy-Proofs-OC</a></h4>
+<p>For proof cards I can recommend <a href="https://glutanimate.com/projects/">Glutanimates</a> overlapping cloze cards add-on for Anki. I used to make these overlapping cards manually (with the flexible cloze note type), as I will also demonstrate below, but the add-on saves you time in the card creation process and a lot of time if you ever need to fix something later, since you only need to fix this on one card, and not one multiple cards. Since you almost always will need to at least fix a typo the amount of work saved by the latter is definitely worth it, in my opinion.</p>
+<details><summary><b>Fields</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="err">Original</span>
+<span class="err">Meta-Errata</span>
+<span class="err">Orientation-Math</span>
+<span class="err">Orientation-Physics</span>
+<span class="err">Preface</span>
+<span class="err">LHS</span>
+<span class="err">Operator</span>
+<span class="err">Name</span>
+<span class="err">RHS</span>
+<span class="err">Proof-Line</span>
+<span class="err">Extra</span>
+<span class="err">Meta-ForSortingField</span>
+<span class="err">Image-Sources</span>
+<span class="err">Changelog</span>
+<span class="err">…</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Front Template</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;front&quot;</span><span class="p">&gt;</span>
+    {{#Orientation-Math}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-math</span><span class="p">&gt;</span>{{Orientation-Math}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Orientation-Math}}
+    {{#Orientation-Physics}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation-physics</span><span class="p">&gt;</span>{{Orientation-Physics}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Orientation-Physics}}
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    {{/Preface}}
+    {{#LHS}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">lhs</span><span class="p">&gt;</span>{{LHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/LHS}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">operator</span><span class="p">&gt;</span>{{Operator}} {{Name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{#RHS}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">rhs</span><span class="p">&gt;</span>{{RHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/RHS}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">proof-line</span><span class="p">&gt;&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;#0008000&quot;</span><span class="p">&gt;</span>Proof<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>:<span class="ni">&amp;nbsp;</span>({{Proof-Line}})<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!--template</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE START ########</span>
+<span class="c">version: 1.0.0</span>
+<span class="c">--&gt;</span>
+
+<span class="c">&lt;!--</span>
+<span class="c">PLEASE DO NOT MODIFY THE DEFAULT TEMPLATE SECTIONS.</span>
+<span class="c">Any changes between the &#39;template&#39; markers will be lost once</span>
+<span class="c">the add-on updates its template.</span>
+<span class="c">Copyright (C) 2016-2019 Aristotelis P. &lt;https://glutanimate.com/&gt;</span>
+<span class="c">The Cloze Overlapper card template is licensed under the CC BY-SA 4.0</span>
+<span class="c">license (https://creativecommons.org/licenses/by-sa/4.0/). This only</span>
+<span class="c">applies to the card template, not the contents of your notes.</span>
+<span class="c">Get Cloze Overlapper for Anki at:</span>
+<span class="c">https://ankiweb.net/shared/info/969733775</span>
+<span class="c">--&gt;</span>
+
+…
+
+<span class="c">&lt;!--</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE END ######## */</span>
+<span class="c">template--&gt;</span>
+
+<span class="c">&lt;!-- Add your customizations here: --&gt;</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Styling</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="c">/*template</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE START ########</span>
+<span class="c">version: 1.0.0</span>
+<span class="c">*/</span>
+
+<span class="c">/*</span>
+<span class="c">PLEASE DO NOT MODIFY THE DEFAULT TEMPLATE SECTIONS.</span>
+<span class="c">Any changes between the &#39;template&#39; markers will be lost once</span>
+<span class="c">the add-on updates its template.</span>
+<span class="c">*/</span>
+
+<span class="c">/* general card style */</span>
+
+<span class="err">…</span>
+
+<span class="c">/*</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE END ########</span>
+<span class="c">template*/</span>
+
+<span class="c">/* Add your customizations here: */</span>
+
+<span class="p">.</span><span class="nc">card</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="mh">#586E75</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#FDF6E3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">text</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">preface</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">orientation-math</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#DC322F</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">orientation-physics</span> <span class="p">{</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="mh">#268BD2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">lhs</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">operator</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">rhs</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">proof-line</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">extra-entry</span><span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="n">justified</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sources</span><span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">cloze</span> <span class="p">{</span>
+  <span class="c">/* regular cloze deletion */</span>
+  <span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">darkorange</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">img</span><span class="o">[</span><span class="nt">src</span><span class="o">*=</span><span class="s2">&quot;latex&quot;</span><span class="o">]</span> <span class="p">{</span>
+  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="p">.</span><span class="nc">anki</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">mobile</span> <span class="p">.</span><span class="nc">latex</span> <span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Back Template</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;back&quot;</span><span class="p">&gt;</span>
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    {{/Preface}}
+    {{#LHS}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">lhs</span><span class="p">&gt;</span>{{LHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/LHS}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">operator</span><span class="p">&gt;</span>{{Operator}} {{#Name}}{{Name}}{{/Name}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{#RHS}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">rhs</span><span class="p">&gt;</span>{{RHS}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/RHS}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">proof-line</span><span class="p">&gt;&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;#0008000&quot;</span><span class="p">&gt;</span>Beweis<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>::<span class="ni">&amp;nbsp;</span>{{Proof-Line}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="c">&lt;!--template</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE START ########</span>
+<span class="c">version: 1.0.0</span>
+<span class="c">--&gt;</span>
+
+<span class="c">&lt;!--</span>
+<span class="c">PLEASE DO NOT MODIFY THE DEFAULT TEMPLATE SECTIONS.</span>
+<span class="c">Any changes between the &#39;template&#39; markers will be lost once</span>
+<span class="c">the add-on updates its template.</span>
+<span class="c">--&gt;</span>
+
+…
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;extra&quot;</span><span class="p">&gt;</span>
+        {{#Extra}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;extra-entry&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{Extra}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        {{/Extra}}
+        {{#Meta-ForSortingField}}
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Meta-ForSortingField}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        {{/Meta-ForSortingField}}
+        {{#Image-Sources}}
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sources&quot;</span><span class="p">&gt;</span>{{hint:Image-Sources}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        {{/Image-Sources}}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+…
+
+<span class="c">&lt;!--</span>
+<span class="c">######## CLOZE OVERLAPPER DEFAULT TEMPLATE END ######## */</span>
+<span class="c">template--&gt;</span>
+
+<span class="c">&lt;!-- Add your customizations here: --&gt;</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Code</b></summary>
+
+<!--Don't worry, this looks better in the editor itself.-->
+
+<div class="highlight"><pre><span></span><code><span class="nl">Original</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="nl">IA</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">\</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">binomial</span><span class="w"> </span><span class="n">theorem</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="nl">IV</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="w"> </span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="n">m</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="p">;</span><span class="o">=</span><span class="err">\</span><span class="p">;</span><span class="err">\</span><span class="p">)</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="o">|</span><span class="n">α</span><span class="o">|</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">!}</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="n">α</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="k">IS</span><span class="err">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="o">=</span><span class="w">   </span><span class="o">[</span><span class="n">[oc1::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="n">a_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]​</span><span class="w"></span>
+<span class="o">=</span><span class="w">   </span><span class="err">​</span><span class="o">[</span><span class="n">[oc2::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">α_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="o">^</span><span class="n">k</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">a_1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="p">(</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="err">{</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]</span><span class="w">   </span><span class="o">[</span><span class="n">[oc2::binomial theorem</span><span class="o">]</span><span class="err">]​</span><span class="w"></span>
+<span class="o">=</span><span class="w">   </span><span class="o">[</span><span class="n">[oc3::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">α_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="o">^</span><span class="n">k</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">a_1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{\</span><span class="n">vert</span><span class="w"> </span><span class="n">α</span><span class="s1">&#39; \vert = k - α_1} \frac {(k - α_1)!} {α&#39;</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">a_2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_2</span><span class="err">}</span><span class="w"> </span><span class="err">⋅</span><span class="w"> </span><span class="err">\</span><span class="n">cdots</span><span class="w"> </span><span class="err">⋅</span><span class="w"> </span><span class="err">{</span><span class="n">a_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]</span><span class="w">   </span><span class="o">[</span><span class="n">[oc3::IV, [latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">α</span><span class="s1">&#39; = (α_2, …, α_{m + 1})\)[/latex] ]]</span>
+<span class="s1">=   [[oc4::[latex]\(\displaystyle\sum\limits_{α_1 = 0}^k \sum\limits_{\vert α&#39;</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="err">​</span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="p">)</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="s1">&#39;!} \binom k {α_1} {a_1}^{α_1} ⋅ \cdots ⋅ {a_{m + 1} }^{α_{m + 1} }\)[/latex] ]]  [[oc4::summation is linear]]​</span>
+<span class="s1">=   [[oc5::[latex]\(\displaystyle\sum\limits_{α_1 = 0}^k \sum\limits_{\vert α&#39;</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">!}</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="n">α</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]</span><span class="w">    </span><span class="o">[</span><span class="n">[oc5::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="p">)</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">&#39;!}</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">!}\</span><span class="p">),</span><span class="w"> </span><span class="err">\</span><span class="p">(</span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">α_1</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">,</span><span class="w"> </span><span class="n">α_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="p">)</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]​</span><span class="w"></span>
+<span class="o">=</span><span class="w">   </span><span class="o">[</span><span class="n">[oc6::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="err">{\</span><span class="n">vert</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">!}</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="n">α</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]</span><span class="w"> </span><span class="o">[</span><span class="n">[oc6::[latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="w"> </span><span class="n">α_1</span><span class="w"> </span><span class="err">\</span><span class="n">vert</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="err">]]</span><span class="w"></span>
+
+<span class="n">Orientation</span><span class="o">-</span><span class="nl">Math</span><span class="p">:</span><span class="w"></span>
+<span class="n">Algebra</span><span class="w"></span>
+
+<span class="nl">Preface</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">R</span><span class="err">\</span><span class="p">)</span><span class="w"> </span><span class="n">commutative</span><span class="w"> </span><span class="n">unitary</span><span class="w"> </span><span class="n">ring</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="n">ℕ</span><span class="err">\</span><span class="p">),</span><span class="w"> </span><span class="err">\</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="err">≥</span><span class="w"> </span><span class="mi">2</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="nl">LHS</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">((</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="n">m</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="nl">Operator</span><span class="p">:</span><span class="w"></span>
+<span class="o">=</span><span class="w"></span>
+
+<span class="nl">RHS</span><span class="p">:</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="o">|</span><span class="n">α</span><span class="o">|</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="n">frac</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">α</span><span class="err">!}</span><span class="w"> </span><span class="n">a</span><span class="o">^</span><span class="n">α</span><span class="err">\</span><span class="p">)</span><span class="w">   </span><span class="err">\</span><span class="p">(</span><span class="err">∀</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a_1</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">,</span><span class="w"> </span><span class="n">a_m</span><span class="p">)</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="n">R</span><span class="o">^</span><span class="n">m</span><span class="err">\</span><span class="p">),</span><span class="w"> </span><span class="err">\</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="n">ℕ</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+
+<span class="n">Proof</span><span class="o">-</span><span class="nl">Line</span><span class="p">:</span><span class="w"></span>
+<span class="n">induction</span><span class="w"></span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Images</b></summary>
+
+<b>Front:</b>
+<img alt="Maphy-Proofs-OC example front side cloze 2" src="/maphy/images/Maphy-Proofs-OC-Example-A-Front-2.png">
+
+<b>Back:</b>
+<img alt="Maphy-Proofs-OC example back side cloze 2" src="/maphy/images/Maphy-Proofs-OC-Example-A-Back-2.png">
+
+<b>All clozes revealed:</b>
+<img alt="Maphy-Proofs-OC example back side cloze 6" src="/maphy/images/Maphy-Proofs-OC-Example-A-Back-6.png">
+
+</details>
+
+<h4><a href="#table-of-contents">Example: Maphy-Flexible-C</a></h4>
+<details><summary><b>Fields</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="err">Text</span>
+<span class="err">Meta-Errata</span>
+<span class="err">Preface-Orientation</span>
+<span class="err">Preface</span>
+<span class="err">Text-Orientation</span>
+<span class="err">Text-Preface</span>
+<span class="err">Text-Centered</span>
+<span class="err">Hint-Front-1</span>
+<span class="err">Hint-Front-2</span>
+<span class="err">Theorems</span>
+<span class="err">Extra</span>
+<span class="err">Hint-1</span>
+<span class="err">Hint-2</span>
+<span class="err">Full-Text</span>
+<span class="err">Full-Text-Theorems</span>
+<span class="err">Meta-ForSortingField</span>
+<span class="err">Image-Sources</span>
+<span class="err">Changelog</span>
+<span class="err">Changelog-Hidden</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Front Template</b></summary>
+
+<div class="highlight"><pre><span></span><code>{{#Preface-Orientation}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">Orientation</span><span class="p">&gt;</span>{{Preface-Orientation}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Preface}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+{{/Preface-Orientation}}
+{{^Preface-Orientation}}
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    {{/Preface}}
+{{/Preface-Orientation}}
+
+{{#Text-Orientation}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation</span><span class="p">&gt;</span>{{Text-Orientation}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Text-Orientation}}
+
+{{#Text-Preface}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text-preface</span><span class="p">&gt;</span>{{Text-Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{^Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+    {{#Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">definition</span><span class="p">&gt;</span>{{Text-Centered}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+{{/Text-Preface}}
+{{^Text-Preface}}
+    {{#Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">definition</span><span class="p">&gt;</span>{{Text-Centered}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+{{/Text-Preface}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text</span><span class="p">&gt;</span>{{cloze:Text}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{{#Hint-Front-1}}
+    {{^Hint-Front-2}}
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+
+    {{#Hint-Front-2}}
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+{{/Hint-Front-1}}
+{{^Hint-Front-1}}
+    {{#Hint-Front-2}}
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+{{/Hint-Front-1}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Styling</b></summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span> <span class="p">{</span>
+ <span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+ <span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+ <span class="k">color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+ <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">orientation</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">preface</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">text-preface</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="n">Justified</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">definition</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+ <span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hint</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">text</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">theorems</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">extra</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">full-text</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">full-text-theorems</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Cursive</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sources</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">changelog</span> <span class="p">{</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Serif</span><span class="p">;</span>
+<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">text-align</span><span class="p">:</span> <span class="n">Center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">cloze</span> <span class="p">{</span>
+<span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+<span class="k">color</span><span class="p">:</span> <span class="kc">darkorange</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">nightMode</span> <span class="p">.</span><span class="nc">cloze</span> <span class="p">{</span>
+<span class="k">color</span><span class="p">:</span> <span class="kc">olive</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Back Template</b></summary>
+
+<div class="highlight"><pre><span></span><code>{{#Preface-Orientation}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">Orientation</span><span class="p">&gt;</span>{{Preface-Orientation}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Preface}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+{{/Preface-Orientation}}
+{{^Preface-Orientation}}
+    {{#Preface}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">preface</span><span class="p">&gt;</span>{{Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    {{/Preface}}
+{{/Preface-Orientation}}
+
+{{#Text-Orientation}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">orientation</span><span class="p">&gt;</span>{{Text-Orientation}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Text-Orientation}}
+
+{{#Text-Preface}}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text-preface</span><span class="p">&gt;</span>{{Text-Preface}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{^Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+    {{#Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">definition</span><span class="p">&gt;</span>{{Text-Centered}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+{{/Text-Preface}}
+{{^Text-Preface}}
+    {{#Text-Centered}}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">definition</span><span class="p">&gt;</span>{{Text-Centered}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Text-Centered}}
+{{/Text-Preface}}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">text</span><span class="p">&gt;</span>{{cloze:Text}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{{#Theorems}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">theorems</span><span class="p">&gt;</span> {{Theorems}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Theorems}}
+
+{{#Extra}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">extra</span><span class="p">&gt;</span> {{Extra}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Extra}}
+
+{{#Hint-Front-1}}
+    {{^Hint-Front-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+
+    {{#Hint-Front-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+{{/Hint-Front-1}}
+{{^Hint-Front-1}}
+    {{#Hint-Front-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-Front-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-Front-2}}
+{{/Hint-Front-1}}
+
+{{#Hint-1}}
+    {{^Hint-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-2}}
+
+    {{#Hint-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-1}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-2}}
+{{/Hint-1}}
+{{^Hint-1}}
+    {{#Hint-2}}
+    <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">hint</span><span class="p">&gt;</span> {{hint:Hint-2}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {{/Hint-2}}
+{{/Hint-1}}
+
+{{#Full-Text}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">full-text</span><span class="p">&gt;</span> {{hint:Full-Text}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Full-Text}}
+
+{{#Full-Text-Theorems}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">full-text-theorems</span><span class="p">&gt;</span> {{hint:Full-Text-Theorems}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Full-Text-Theorems}}
+
+{{#Meta-ForSortingField}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Meta-ForSortingField}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Meta-ForSortingField}}
+
+{{#Image-Sources}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span>  <span class="na">class</span><span class="o">=</span><span class="s">sources</span><span class="p">&gt;</span> {{hint:Image-Sources}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Image-Sources}}
+
+{{#Changelog}}
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">changelog</span><span class="p">&gt;</span> {{hint:Changelog}} <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{{/Changelog}}
+</code></pre></div>
+
+
+</details>
+
+<details><summary><b>Example Code</b></summary>
+Now a rough sketch on how one would replicate the previous example with overlapping clozes without the add-on.
+
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="n">a_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="err">}}</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">…​</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="o">***</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="n">a_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{{</span><span class="nl">c2</span><span class="p">:</span><span class="err">:</span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">α_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="o">^</span><span class="n">k</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">a_1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="p">(</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="err">{</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="err">}}</span><span class="w"> </span><span class="err">{{</span><span class="nl">c2</span><span class="p">:</span><span class="err">:</span><span class="n">binomial</span><span class="w"> </span><span class="n">theorem</span><span class="err">}}​</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="o">***</span><span class="w"></span>
+<span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="p">(</span><span class="n">a_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">\</span><span class="n">sum_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="n">k</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">α_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="o">^</span><span class="n">k</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">a_1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="p">(</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="n">a_j</span><span class="p">)</span><span class="o">^</span><span class="err">{</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">α_1</span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="w"> </span><span class="n">binomial</span><span class="w"> </span><span class="n">theorem</span><span class="err">​</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{{</span><span class="nl">c3</span><span class="p">:</span><span class="err">:</span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="err">\</span><span class="n">displaystyle</span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{</span><span class="n">α_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="o">^</span><span class="n">k</span><span class="w"> </span><span class="err">\</span><span class="n">binom</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">{</span><span class="n">a_1</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_1</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="nf">sum</span><span class="err">\</span><span class="n">limits_</span><span class="err">{\</span><span class="n">vert</span><span class="w"> </span><span class="n">α</span><span class="s1">&#39; \vert = k - α_1} \frac {(k - α_1)!} {α&#39;</span><span class="err">!}</span><span class="w"> </span><span class="err">{</span><span class="n">a_2</span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_2</span><span class="err">}</span><span class="w"> </span><span class="err">⋅</span><span class="w"> </span><span class="err">\</span><span class="n">cdots</span><span class="w"> </span><span class="err">⋅</span><span class="w"> </span><span class="err">{</span><span class="n">a_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="err">}</span><span class="o">^</span><span class="err">{</span><span class="n">α_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="w"> </span><span class="err">}\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="err">}}</span><span class="w"> </span><span class="err">{{</span><span class="nl">c3</span><span class="p">:</span><span class="err">:</span><span class="n">IV</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">latex</span><span class="o">]</span><span class="err">\</span><span class="p">(</span><span class="n">α</span><span class="err">&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">α_2</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">,</span><span class="w"> </span><span class="n">α_</span><span class="err">{</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span><span class="p">)</span><span class="err">\</span><span class="p">)</span><span class="o">[</span><span class="n">/latex</span><span class="o">]</span><span class="err">}}</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">​…</span><span class="w"></span>
+<span class="o">***</span><span class="w"></span>
+<span class="err">…</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">…</span><span class="w"></span>
+</code></pre></div>
+
+
+</details>
+
+<h3><a href="#table-of-contents">Writing the Cards</a></h3>
+<p>I like to sketch my cards on paper while or after I learn something. This gives me a surface to make rough drafts and sketch things in order to help me understand and I can take this everywhere with me. Most of all however I can make cards in bulk before I ever need to type them in Anki, avoiding the frequent distraction this entails as well as frequent switching between learning and typing. Thus I can highly recommend this for maphy subjects.</p>
+<p>Furthermore I write down the cards in such a way, that I do not need to think a lot when entering them into Anki later on. This also allows me to quickly type in one card after the other. I use that mental downtime while entering the cards into Anki to listen to podcast etc., it is thus a kind of break for me. Thus taking a bit of extra time to be able to later on just copy whats on the page gives a further efficiency increase. This usually does not entail a lot of extra work, but it means I note the page, the assumptions and whatever else I need to write down. With time I have evolved a few conventions allowing me to leave out some things.</p>
+<p>As an aside, for programming I prefer to read a few chapters first before I go through them again on the PC and put them directly into Anki cards. This is simply because I prefer experimenting with formatting code on the PC instead of on paper and in this case it saves me one step of work. But especially for proofs I usually need a long time to think through them thoroughly and I often write cards on different aspects of the proof or need to correct them frequently before I am satisfied and type them in Anki.</p>
+<h4><a href="#table-of-contents">Neo-2 Keyboard Layout</a></h4>
+<p>Regarding your workflow, typing in the cards, I can recommend the Neo-2 keyboard layout if you use German, English or any language written in the Latin alphabet with diacritics. Especially in it's QWERTY form, since I admire the elegance of ergonomically designed keyboards, but I like the ubiquity that comes with the QWERTY layout. I also find these layouts lose their efficiency when you write a few different languages, especially when you do not want to learn a new layout for every language and have to switch between them.</p>
+<p>You can of course, just use this layout as a model to base your own keyboard layout off of, which I initially did as well, but I like the fact, that you can often already find the layout on offer, especially on various Linux distribution, making it ready to use from the get go, without needing to fiddle to get your own keyboard layout to work. Especially since I have yet to exhaust the options of the layout.</p>
+<p>Now the reasons, why I am such a huge fan of this layout, are, that a lot of the symbols you use often in programming (which is a pain on German keyboard layouts, not so much on the US-English layout), math and physics (namely greek letters as well as a lot of other symbols) as well as the movement keys are accessible without your fingers leaving the home row, as well as a few more if you also have access to a numeric keypad (numpad). The usage of the Unicode symbols instead of the LaTeX escape sequences makes writing LaTeX markup faster but especially far more readable as you will probably believe, if you compare even just this short code fragment <code>\frac ∂ {∂t} x(t)</code> with this one <code>\frac \partial {\partial t} x(t)</code>.</p>
+<p>The main advantage of this layout over something like Vim or Emacs with Anki, is that you can directly use it in the editor without any long workarounds. I am a big fan of Vim and Emacs, I currently also use Neo2 with Vim. For Anki however, as far as I know and in my opinion, using a good keyboard layout is currently easier than using workarounds for importing from files.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

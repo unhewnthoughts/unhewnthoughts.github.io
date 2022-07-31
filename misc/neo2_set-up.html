@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Neo 2 Setup-Up Guide</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Guide on making available the QWERTY layout variant for Neo 2 on Ubuntu." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Unhewn Thoughts</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/category/anki.html">Anki</a></li>
+                    <li><a href="/category/maphy.html">Maphy</a></li>
+                    <li class="active"><a href="/category/misc.html">Misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/misc/neo2_set-up.html" rel="bookmark"
+           title="Permalink to Neo 2 Setup-Up Guide">Neo 2 Setup-Up Guide</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-02-02T21:55:00+01:00">
+                Published: So 02 Februar 2020
+        </abbr>
+		<br />
+        <abbr class="modified" title="2020-02-02T22:09:00+01:00">
+                Updated: So 02 Februar 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/ut.html">UT</a>
+        </address>
+<p>In <a href="/category/misc.html">Misc</a>.</p>
+<p>tags: <a href="/tag/neo-layout.html">Neo-Layout</a> <a href="/tag/windows.html">Windows</a> <a href="/tag/ubuntu.html">Ubuntu</a> <a href="/tag/linux.html">Linux</a> </p>
+</footer><!-- /.post-info -->      <h1>Neo 2 Set-Up Guide</h1>
+<p><strong>Disclaimer:</strong> This is a very rough draft, it is not well written, but it is functional, so I hope it helps.</p>
+<h2>Neo 2 in Ubuntu</h2>
+<p>(Everything here, was tested for Ubuntu 18.04.4 LTS.)</p>
+<p>In Ubuntu Neo 2 is already available as a keyboard layout from the start, the qwerty and qwertz variants however are not available to pick, although they are already implemented (I know that for example for Kubuntu this is different, here I think every implemented keyboard layout is available from the start).</p>
+<h3>Making already existing layouts available</h3>
+<p>Go to <code>/usr/share/X11/xkb/rules</code> and there open the file <code>evdev.xml</code>. In order to save the changes you make to the file you will have to open the file with sudo privilege with your editor of choice or by changing the file to be writable with chmod and then in the end changing it back to the old settings. For example to open it with sudo privileges open a terminal in <code>/usr/share/X11/xkb/rules</code> and then enter <code>SUDO_EDITOR=kate sudoedit evdev.xml</code> (which is what the terminal (bash shell) helpfully prompts me do to when I tried to use <code>sudo kate evdev.xml</code>). You can of course do this with any editor of your choice. Scroll down or rather use the find function to search for "neo" and find</p>
+<div class="highlight"><pre><span></span><code>        <span class="nt">&lt;variant&gt;</span>
+          <span class="nt">&lt;configItem&gt;</span>
+            <span class="nt">&lt;name&gt;</span>neo<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>German (Neo 2)<span class="nt">&lt;/description&gt;</span>
+          <span class="nt">&lt;/configItem&gt;</span>
+        <span class="nt">&lt;/variant&gt;</span>
+</code></pre></div>
+
+
+<p>which I will call (*).</p>
+<p>Now open <code>/usr/share/X11/xkb/symbols/de</code>, but do not edit anything. Searching for <code>xkb_symbols "neo"</code>, <code>name[Group1]= "German (Neo 2)"</code> and comparing it with the above mentioned section <code>/usr/share/X11/xkb/rules</code> motivates the following:</p>
+<p>Directly after (*) add:</p>
+<div class="highlight"><pre><span></span><code>        <span class="nt">&lt;variant&gt;</span>
+          <span class="nt">&lt;configItem&gt;</span>
+            <span class="nt">&lt;name&gt;</span>neo_qwertz<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;description&gt;</span>German (Neo qwertz)<span class="nt">&lt;/description&gt;</span>
+          <span class="nt">&lt;/configItem&gt;</span>
+        <span class="nt">&lt;/variant&gt;</span>
+</code></pre></div>
+
+
+<p>Now don't forget to save.</p>
+<p>I got the values for this from</p>
+<div class="highlight"><pre><span></span><code>partial alphanumeric_keys modifier_keys keypad_keys
+xkb_symbols &quot;neo_qwertz&quot; {
+
+    include &quot;de(neo_qwertz_base)&quot;
+
+    name[Group1]= &quot;German (Neo qwertz)&quot;;
+
+    include &quot;shift(both_capslock)&quot;
+    include &quot;level3(caps_switch)&quot;
+    include &quot;level3(bksl_switch)&quot;
+    include &quot;level5(lsgt_switch_lock)&quot;
+    include &quot;level5(ralt_switch_lock)&quot;
+};
+</code></pre></div>
+
+
+<p>in <code>/usr/share/X11/xkb/symbols/de</code>.</p>
+<p>You don't need to restart to be able to pick "German (Neo qwertz)" from <em>Region &amp; Language → Input Sources → + → German → German (Neo qwertz)</em>, however you have to restart for the changes to take effect. I can't remember anymore whether you can use Neo 2 with any other keyboard layout. I think Ubuntu had problems with this, but I know that you can use it with an IME, at least I was able to use it in combination with an IME for Japanese. But I think I had problems having "English (United States)" active at the same time.</p>
+<p>Also remember that pressing left and right shift at the same time puts you into caps lock mode, and similarly if you press the other two modifiers keys at the same time, i. e. left + right Mod3 or left + right Mod4.</p>
+<p>For the qwerty version it is the exact same, you just have to substitute <code>qwertz</code> for <code>qwerty</code> at every junction.</p>
+<h4>Sources:</h4>
+<ul>
+<li>Keyboard layout:</li>
+<li>https://help.ubuntu.com/community/Custom%20keyboard%20layout%20definitions</li>
+<li>https://ubuntuforums.org/showthread.php?t=1387812</li>
+<li>https://ubuntuforums.org/showthread.php?t=1589744</li>
+<li>Editing protected files:</li>
+<li>https://askubuntu.com/questions/92379/how-do-i-get-permissions-to-edit-system-configuration-files</li>
+</ul>
+<h2>Neo 2 in Windows</h2>
+<p>(Last tested on the 02.02.2020.)</p>
+<p>Go to <a href="https://neo-layout.org/"><code>https://neo-layout.org/</code></a> and there in the top right corner should be a link <a href="https://neo-layout.org/neo20.exe"><code>https://neo-layout.org/neo20.exe</code></a> to the <code>.exe</code> for Windows. Otherwise try the link directly or go the file on GitHub <a href="https://github.com/neo-layout/neo-layout/blob/master/windows/neo-vars/out/neo20.exe"><code>https://github.com/neo-layout/neo-layout/blob/master/windows/neo-vars/out/neo20.exe</code></a>.
+The <code>.exe</code> is an Autohotkey script, that remaps all your keypresses. [*] It is therefore not as robust as the version for Linux, but for almost everything it works (so far the only problem I had, was using the terminal in Windows). (You might also have to remember to install Autohotkey, I can't remember.)
+The problem with this Autohotkey script is that it is for Neo 2, meaning there is no script for Neo2_qwertz or Neo2_qwerty.
+Now the clue, the thing nobody tells you (except the source code on GitHub), is that you can press Mod3 + F6 to toggle the qwertz mode. As far as I know this is a training mode so people can slowly adjust to Neo 2 while having the fallback option to qwertz. But I use it as my workaround to have a Neo2_qwertz layout in Windows.
+The major drawbacks with this are, that, I think, you have to use a base German qwertz layout for this to function properly and after every Windows start you have to toggle the qwertz mode to get out of the base Neo 2 mode.</p>
+<p>You can also press Mod3 + F1-F12 for different effects. I might translate the popup messages for these at some point, for now you can try out what happens, as far as I know none of them is a qwerty option.</p>
+<details><summary>[\*]:</summary>
+== neo-vars ==<br>
+Hier befindet sich ein Treiber, der mit der Autohotkey-Skriptsprache (http://www.autohotkey.com) erstellt wurde. Hierfür muss lediglich eine ausführbare EXE-Datei heruntergeladen und gestartet werden.
+Dazu benötigt man insbesondere keine Administratorrechte, wenn man das Programm beispielsweise in dem Verzeichnis „Eigene Dateien“ abspeichert, so dass sich dieser Treiber gut zum schnellen Ausprobieren von NEO eignet. Zudem kann man diesen Treiber etwa von einem USB-Stick aus starten, wenn man auf einem fremden Rechner arbeiten muss/will.
+<br><br>
+Rough, no effort, direct translation: <br>
+== neo-vars ==<br>
+Here is a driver, which was created using the Autohotkey scripting language (http://www.autohotkey.com). For this only an executable EXE-file needs to be downloaded and started. For this one does not need admin rights, thus, if for instance one saves the file in "My Documents", the driver is well suited to try out NEO. Furthermore one can start this driver from a USB stick if one wants/needs to work on a foreign computer.
+</details>
+
+<p>Source: https://github.com/neo-layout/neo-layout/tree/master/windows (Retrieved: 2020.02.02)</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

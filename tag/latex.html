@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Unhewn Thoughts - LaTeX</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Unhewn Thoughts</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/category/anki.html">Anki</a></li>
+                    <li><a href="/category/maphy.html">Maphy</a></li>
+                    <li><a href="/category/misc.html">Misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/anki/guide-on-using-latex-xetex-luatex-with-anki.html">Guide on Using LaTeX, XeTeX, LuaTeX with Anki</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-10-09T17:13:00+02:00">
+                Published: Mi 09 Oktober 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-10-09T17:20:00+02:00">
+                Updated: Mi 09 Oktober 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/ut.html">UT</a>
+        </address>
+<p>In <a href="/category/anki.html">Anki</a>.</p>
+<p>tags: <a href="/tag/anki.html">Anki</a> <a href="/tag/latex.html">LaTeX</a> <a href="/tag/xetex.html">XeTeX</a> <a href="/tag/luatex.html">LuaTeX</a> <a href="/tag/guide.html">Guide</a> </p>
+</footer><!-- /.post-info --><h1>Guide on Using LaTeX, XeTeX, LuaTeX with Anki</h1>
+<p><strong>Disclaimer:</strong> Please take this 'Guide' with a grain of salt, I just tried to write this guide hoping it would help someone avoid the time of figuring all this out for themselves, as well as collecting a lot of the answers to various problems I had along the way in one place.</p>
+<h2><a id="table-of-contents"></a>Table of Contents</h2>
+<ul>
+<li><a href="#links-to-complementary-guides">Links to Complementary Guides</a></li>
+<li><a href="#why-latex-is-still-relevant-for-anki">Why LaTeX is Still Relevant for Anki</a></li>
+<li><a href="#quick-start-guide">Quick Start Guide</a></li>
+<li><a href="#ankis-latex-process">Anki's LaTeX Process</a></li>
+<li><a href="#latex-delimiters">LaTeX Delimiters</a></li>
+<li><a href="#latex-settings">LaTeX Settings</a></li>
+<li><a href="#tex-generation"><code>.tex</code> Generation</a><ul>
+<li><a href="#what-is-generated">What is Generated</a></li>
+<li><a href="#when-is-it-generated">When is it Generated</a></li>
+</ul>
+</li>
+<li><a href="#png-and-svg-generation"><code>.png</code> and <code>.svg</code> Generation</a></li>
+<li><a href="#image-file-names">Image File Names</a></li>
+<li><a href="#pdftex-xetex-and-luatex">pdfTex, XeTeX and LuaTeX</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#math-starter-packs">Math Starter Packs</a><ul>
+<li><a href="#pdftex">pdfTeX</a></li>
+<li><a href="#xetex-and-luatex">XeTeX and LuaTeX</a></li>
+</ul>
+</li>
+<li><a href="#adjusting-ankis-latex-build-process">Adjusting Anki's LaTeX Build Process</a></li>
+<li><a href="#dvi-xdv-png"><code>.dvi</code>, <code>.xdv</code> → <code>.png</code></a></li>
+<li><a href="#dvi-xdv-svg"><code>.dvi</code>, <code>.xdv</code> → <code>.svg</code></a></li>
+<li><a href="#pdf-png"><code>.pdf</code> → <code>.png</code></a><ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul>
+</li>
+<li><a href="#pdf-svg"><code>.pdf</code> → <code>.svg</code></a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#read-first">Read First</a></li>
+<li><a href="#broken-image-files-dont-get-replaced-after-using-_tools_-_check-media_">Broken Image Files Don't Get Replaced After Using <em>Tools</em> → <em>Check Media</em></a></li>
+<li><a href="#broken-dvi-files-with-luatex">Broken <code>.dvi</code> Files with LuaTeX</a></li>
+<li><a href="#latex-svg-images-not-showing-on-ankidroid"><code>latex-….svg</code> Images Not Showing on AnkiDroid</a></li>
+<li><a href="#permission-authorization-problems-with-convert">Permission / Authorization Problems with 'convert'</a></li>
+<li><a href="#latex-png-images-having-different-sizes-on-small-screens"><code>latex-_.png</code> Images Having Different Sizes on Small Screens</a><ul>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#solutions">Solutions</a></li>
+<li><a href="#changing-the-resolution">Changing the Resolution</a></li>
+<li><a href="#surround-everything-with-latexlatex">Surround Everything with <code>[latex]…[/latex]</code></a></li>
+</ul>
+</li>
+<li><a href="#inline-vertical-alignment-problems">Inline Vertical Alignment Problems</a></li>
+<li><a href="#latex-images-are-to-big-or-too-small">LaTeX Images Are to Big or Too Small</a></li>
+<li><a href="#tips-for-debugging">Tips for Debugging</a></li>
+</ul>
+<h2><a id="links-to-complementary-guides"></a><a href="#table-of-contents">Links to Complementary Guides</a></h2>
+<p>Here are a few links to stuff I didn't have time for or are already well explained.</p>
+<ul>
+<li>For including custom commands in your LaTeX note types I can recommend <a href="http://www.wucathy.com/blog/?p=2704">this guide</a> by Cathy Wu. Also see <a href="#read-first">here</a>, for why you can't use <code>\def</code> or <code>\input</code>.</li>
+</ul>
+<p>Links to other interesting complementary guides:</p>
+<ul>
+<li><a href="https://github.com/ankidroid/Anki-Android/wiki/Advanced-formatting">This</a> advanced formatting guide for AnkiDroid, might be interesting for a few styling tips in general.</li>
+</ul>
+<h2><a id="why-latex-is-still-relevant-for-anki"></a><a href="#table-of-contents">Why LaTeX is Still Relevant for Anki</a></h2>
+<p>While I love the added Mathjax support for Anki, and I jumped ship from LaTeX to MathJax a while ago, I have found myself on occasion in need of LaTeX, the main reasons being:
++ Greater support for obscure packages, e. g. <code>simplewick.sty</code> for Wick contractions in quantum field theory.
++ Speed. Since you generate everything beforehand and save them as images, you don't need to wait everytime your MathJax code is processed.
+I have cards for math and physics proofs with a lot of MathJax on them, with loading times &gt; 2s on my phone. Although this is less of a problem on PC and on better phones, it can still be useful to substitute MathJax with LaTeX completely or mix LaTeX and MathJax to improve the loading time.</p>
+<p>Probably one of the main hurdles for LaTeX and currently one of the main advantages for MathJax is the ease of setup, since MathJax (with the AnkiDroid 2.9 beta and Anki 2.1) comes already integrated. I hope that this guide eliminates a lot of the work and can collect a majority of the things you need to know in one place, lessening the burden on getting started.</p>
+<p>One of the things to keep in mind, is that with MathJax you have the ability to edit cards on the fly on your phone and directly view the result, since Ankidroid has no native LaTeX rendering capabilities you lose this ability with LaTeX.</p>
+<p>As you might have guessed I am still a huge fan of MathJax but the need for LaTeX in Anki probably won't disappear for a while yet.</p>
+<h2><a id="quick-start-guide"></a><a href="#table-of-contents">Quick Start Guide</a></h2>
+<ul>
+<li>Choose a LaTeX <a href="#math-starter-packs">starter pack</a> for your note type's LaTeX Header field</li>
+<li>Copy and paste the starter pack into your note type options and tick the correct <a href="#png-and-svg-generation">checkbox</a> for <code>.png</code> or <code>.svg</code></li>
+<li>Install the <a href="#adjusting-ankis-latex-build-process">'Edit LaTeX build process add-on'</a></li>
+<li>Select a image conversion route from <a href="#adjusting-ankis-latex-build-process">here</a></li>
+<li>Copy and paste it into the add-ons configuration</li>
+</ul>
+<p><strong>Example for LuaTeX and <code>.pdf</code> → <code>.svg</code>:</strong> (my recommendation)</p>
+<p>Go to <em>Tools</em> → <em>Manage Note Types</em> → select your note type → <em>Options…</em> and copy this</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[a4paper,10pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>   <span class="c">% You can&#39;t live without these math commands</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>   <span class="c">% A lot of math symbols</span>
+<span class="k">\usepackage</span><span class="nb">{</span>mathtools<span class="nb">}</span> <span class="c">% Extension for amsmath</span>
+<span class="k">\usepackage</span><span class="nb">{</span>xfrac<span class="nb">}</span>     <span class="c">% For better inline \frac {1}{2} use \sfrac {1}{2}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>unicode-math<span class="nb">}</span> <span class="c">% Allows Unicode input for both XeTeX and LuaTeX,</span>
+                          <span class="c">%e. g. α instead of \alpha</span>
+
+<span class="k">\setmathfont</span><span class="nb">{</span>Latin Modern Math<span class="nb">}</span> <span class="c">%A working open type math font</span>
+                                <span class="c">%see link below for a list of other available fonts</span>
+
+<span class="k">\pagestyle</span><span class="nb">{</span>empty<span class="nb">}</span> <span class="c">%to supress page numbering which hinders proper trimming</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>into the <em>Header</em> field.
+Your <em>Footer</em> field should be <code>\end{document}</code>, if not, adjust that field as well.</p>
+<p>Still in <em>Options…</em> tick the checkbox 'Create scalable images with dvisvgm', so that the checkbox is checked.</p>
+<p>Go to <em>Tools</em> → <em>Add-ons</em> → <em>Get Add-ons…</em> → enter the code found on the 'Edit LaTeX build process' add-on page.</p>
+<p>After you have thus installed the add-on, find it in the add-on list and click on <em>Config</em> on the right hand side of the window.</p>
+<p>Copy this, or alternatively only the <code>.svg</code> section,</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;pngCommands&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;lualatex&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.tex&quot;</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;convert&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-density&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-trim&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.pdf&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.png&quot;</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;svgCommands&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;lualatex&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.tex&quot;</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;pdfcrop&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.pdf&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.pdf&quot;</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;pdf2svg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.pdf&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp.svg&quot;</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>into the window you found under the add-ons config page.</p>
+<p>You can find pdfcrop <a href="http://pdfcrop.sourceforge.net/">here</a> and pdf2svg <a href="https://github.com/dawbarton/pdf2svg">here</a>.</p>
+<p>Now you should be all set. If you have additional questions or don't know what to do, please check the rest of the article to see whether it can answer your questions, as well as the <a href="#troubleshooting">troubleshooting</a> section and there the <a href="#read-first">read first</a> part, where I collect stuff you should know from the Anki manual.</p>
+<h2><a id="ankis-latex-process"></a><a href="#table-of-contents">Anki's LaTeX Process</a></h2>
+<p>You can find out how and what exactly Anki does in the <a href="https://github.com/dae/anki/blob/master/anki/latex.py">latex.py</a>  file in Anki's source code, which is the main reference for this section.</p>
+<h3><a id="latex-delimiters"></a><a href="#table-of-contents">LaTeX Delimiters</a></h3>
+<p>Anki supports three LaTeX delimiters out of the box (<a href="https://apps.ankiweb.net/docs/manual.html#example">see Anki manual</a>:
+* <code>[latex] … [/latex]</code>
+* <code>[$] … [/$]</code>
+* <code>[$$] … [/$$]</code></p>
+<p>Where:
+* <code>[latex] … [/latex]</code> is the general LaTeX delimiter. You can put anything you would put between <code>begin{document}</code> and <code>end{document}</code> in here.
+* <code>[$] … [/$]</code> corresponds to <code>[latex]$ … $[/latex]</code> or <code>[latex]\begin{math} … \end{math}[/latex]</code>.
+* <code>[$$] … [/$$]</code> corresponds to <code>[latex]$$ … $$[/latex]</code> or <code>[latex]\begin{displaymath} … \end{displaymath}[/latex]</code>.</p>
+<p>we will see why and how this comes to be shortly.</p>
+<p>One thing to keep in mind, is that the LaTeX delimiters need to be inside a Anki field, i. e. <code>[latex]…[/latex]</code> in field <code>{{front}}</code> is okay, but <code>[latex]{{front}}[/latex]</code> in your card design is not. See the <a href="https://apps.ankiweb.net/docs/manual.html#media-&amp;-latex-references">Anki manual</a> and <a href="#read-first">this</a> later section.</p>
+<h3><a id="latex-settings"></a><a href="#table-of-contents">LaTeX Settings</a></h3>
+<p>First let's look at your LaTeX settings, which are set for each note type. You can find them under <em>Tools</em> → <em>Manage Note Types</em> → <em>Options</em> (after you selected the note type of interest).</p>
+<p>Notice the checkbox 'Create scalable images with dvisvgm', this will be important later for the discussion about <a href="#png-and-svg-generation">producing .png and .svg images</a>.</p>
+<p>Below this checkbox you will find fields with the headings 'Header' and 'Footer' respectively. At the moment (Anki v2.1.15) the standard settings are</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+<span class="k">\special</span><span class="nb">{</span>papersize=3in,5in<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amssymb,amsmath<span class="nb">}</span>
+<span class="k">\pagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\parindent</span><span class="nb">}{</span>0in<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>for the 'Header' field and</p>
+<div class="highlight"><pre><span></span><code><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>for the 'Footer' field. Otherwise they contain whatever was in these fields when you made a clone of a previous note type or whatever you edited it to be.</p>
+<h3><code>.tex</code> Generation</h3>
+<h4><a id="what-is-generated"></a><a href="#table-of-contents">What is Generated</a></h4>
+<p>For every <code>[latex] … [/latex]</code> delimiter Anki will generate a file <code>tmp.tex</code> in your systems <code>/tmp/anki_temp/</code> or <code>/temp/anki_temp/</code> folder.</p>
+<details><summary>Location of <code>../anki_temp/</code> folders on various operating systems:</summary>
+<ul>
+    <li>Mac Os : <code>/var/folders/…/…/T/anki_temp/</code> (Not tested yet, just a good guess looking at <a href='https://apple.stackexchange.com/questions/224784/issues-with-anki-and-basictex'>this</a>.)</li>
+    <ul>
+        <li>Use <code>echo $TMPDIR</code> to find the exact path. <a href='http://osxdaily.com/2018/08/17/where-temp-folder-mac-access/'>[1]</a></li>
+        <li>Use <code>open $TMPDIR</code> to open the folder. <a href='http://osxdaily.com/2018/08/17/where-temp-folder-mac-access/'>[1]</a></li>
+        <li>Use <code>cd $TMPDIR</code> to change directory to the temporary folder in the command line. <a href='http://osxdaily.com/2018/08/17/where-temp-folder-mac-access/'>[1]</a></li>
+    </ul>
+    <li>Ubuntu : <code>/tmp/anki_temp/</code></li>
+    <li>Windows: <code>C:\Users\YourNameHere\AppData\Local\Temp\anki_temp\</code> (From personal testing on Win 8.)</li>
+    <ul>
+        <li>Obviously you need to change <code>YourNameHere</code> to the name of your Windows user name.</li>
+        <li><code>Also, \anki_temp\</code> is not in <code>C:\Windows\Temp\</code>.</li>
+    </ul>
+</ul>
+</details>
+
+<p><br></p>
+<details>
+    <summary>Code generating the <code>../anki_temp/</code> folder: </summary>
+
+
+
+<div class="highlight"><pre><span></span><code>    <span class="n">_tmpdir</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">tmpdir</span><span class="p">():</span>
+        <span class="s2">&quot;A reusable temp folder which we clean out on each program invocation.&quot;</span>
+        <span class="k">global</span> <span class="n">_tmpdir</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_tmpdir</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">cleanup</span><span class="p">():</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">_tmpdir</span><span class="p">)</span>
+            <span class="kn">import</span> <span class="nn">atexit</span>
+            <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">cleanup</span><span class="p">)</span>
+            <span class="n">_tmpdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="s2">&quot;anki_temp&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_tmpdir</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">_tmpdir</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_tmpdir</span>
+</code></pre></div>
+
+
+Reference: <a href='https://github.com/dae/anki/blob/master/anki/utils.py'>/anki/utils.py</a> (Retrieved: 2019.10.05, Anki v2.1.15)
+</details>
+
+<p><br></p>
+<p><code>tmp.tex</code> will simply be the contents of the LaTeX <a href="#latex-settings">'Header'</a> field of the corresponding note type, followed by whatever is inbetween the <code>[latex] … [/latex]</code> delimiters, followed by the LaTeX <a href="#latex-settings">'Footer'</a> field (and a line break <code>\n</code> after header, delimiter and footer each). Analogously for <code>[$] … [/$]</code> and <code>[$$] … [/$$]</code>, using the <a href="#latex-delimiters">substitutions</a> described in a previous section.
+You can verify this for yourself by visiting your systems <code>/tmp/</code>, <code>\Temp\</code> folder locating your systems <code>anki_temp</code> folder and opening the <code>tmp.tex</code> file. This is also a great starting point for <a href="#tips-for-debugging">debugging your LaTeX troubles with Anki</a>.</p>
+<h4><a id="when-is-it-generated"></a><a href="#table-of-contents">When is it Generated</a></h4>
+<p>If you've opened your systems tmp folder you might have noticed, that no <code>anki_temp</code> folder exists, this is because the folder will be deleted after you close Anki and will only be generated if Anki generates any temporary files.
+The <code>tmp.tex</code> files are generated whenever a display of the LaTeX code is needed. For instance when previewing a card or reviewing a card.
+Or in general whenever Anki needs to generate <code>.png</code> or <code>.svg</code> files from the LaTeX code.</p>
+<p>Thus, by making small changes in between <code>[Latex]…[/Latex]</code>, even adding a space before <code>[/Latex]</code> is enough, and then previewing the card, you can force Anki to make new images and not use the previously created and saved images.
+This is especially helpful to debug changes to your LaTeX code, that are not made in between Anki's LaTeX delimiters,  e.g. when comparing different font sizes or changes to the Latex header or footer in general.</p>
+<p>In general you will probably want to use <em>Tools</em> → <em>Check Media</em>, which (aside from it's other functions) also forces Anki to check whether every LaTeX delimiter field has a corresponding <code>.png</code> or <code>.svg</code> (depending on the <a href="#png-and-svg-generation">settings in your note type</a>) image file in the media folder.
+You can use this to update image files for all cards with changes to their LaTeX code, e. g. for when you made a change on mobile in the latex code and want to generate the updated image file on your PC for use on your mobile device. This also means, that you don't have to search changed cards on your PC to preview and thus update the changes to your media folder.
+However this does not work when you have made changes to your <a href="#adjusting-ankis-latex-build-process">'Edit LaTeX build process'</a>, for these to register you can use <a href="#broken-image-files-dont-get-replaced-after-using-_tools_-_check-media_">this</a> workaround.</p>
+<h3><a id="<code>.png</code> and <code>.svg</code> Generation"></a><a href="#table-of-contents"><code>.png</code> and <code>.svg</code> Generation</a></h3>
+<p>To understand how Anki creates the images for each LaTeX code, one needs to look at this section in <a href="https://github.com/dae/anki/blob/master/anki/latex.py">latex.py</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pngCommands</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;latex&quot;</span><span class="p">,</span> <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.tex&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;dvipng&quot;</span><span class="p">,</span> <span class="s2">&quot;-D&quot;</span><span class="p">,</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="s2">&quot;-T&quot;</span><span class="p">,</span> <span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.dvi&quot;</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.png&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">svgCommands</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;latex&quot;</span><span class="p">,</span> <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.tex&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;dvisvgm&quot;</span><span class="p">,</span> <span class="s2">&quot;--no-fonts&quot;</span><span class="p">,</span> <span class="s2">&quot;-Z&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.dvi&quot;</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;tmp.svg&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</code></pre></div>
+
+
+<p>Depending on the <a href="#latex-settings">checkbox</a> 'Create scalable images with dvisvgm' either the command line instructions under 'pngCommands' or the ones under 'svgCommands' are executed (using Pythons <code>call()</code> function).
+This is the same as if you would execute these commands in the command line in the <code>../anki_temp/</code> folder after the <code>tmp.tex</code> file generation. For instance, for the pngCommands:</p>
+<div class="highlight"><pre><span></span><code>latex -interaction<span class="o">=</span>nonstopmode tmp.tex
+dvipng -D <span class="m">200</span> -T tight tmp.dvi -o tmp.png
+</code></pre></div>
+
+
+<p>Editing these instructions using the <a href="#adjusting-ankis-latex-build-process">'Edit LaTeX build process'</a> add-on, allows the customization of Anki's LaTeX handling, which will be helpful for using XeTeX and LuaTeX.</p>
+<h3><a id="Image File Names"></a><a href="#table-of-contents">Image File Names</a></h3>
+<p>Anki generates a corresponding image for each LaTeX code and saves them in your <code>/collection.media/</code> folder in order not to have to generate images for each LaTeX item, each time you review a card [*]. They are also used for display on the mobile versions of Anki which do not have LaTeX capabilities.</p>
+<p>How does Anki know whether it has already created an image, how does it find the correct image for each LaTeX code and how does it know that the exact same image on another card yields the same image without having to do the whole image generation for that code again?</p>
+<details><summary>The answer is, Anki generates an SHA-1 hash for the LaTeX code, renaming the generated images with the hash.</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">_imgLink</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">latex</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="s2">&quot;Return an img link for LATEX, creating if necesssary.&quot;</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">_latexFromHtml</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">latex</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;latexsvg&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>
+
+    <span class="c1"># is there an existing file?</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;latex-</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">checksum</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)),</span> <span class="n">ext</span><span class="p">)</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="s1">&#39;&lt;img class=latex src=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span> <span class="n">fname</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">link</span>
+
+    <span class="c1"># building disabled?</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;[latex]</span><span class="si">%s</span><span class="s2">[/latex]&quot;</span> <span class="o">%</span> <span class="n">latex</span>
+
+    <span class="n">err</span> <span class="o">=</span> <span class="n">_buildImg</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">err</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">link</span>
+</code></pre></div>
+
+
+Reference: [/anki/latex.py][latex.py] (Retrieved: 2019-10-06, Anki v2.1.15)
+
+The important line for the hash is:
+
+<div class="highlight"><pre><span></span><code><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;latex-</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">checksum</span><span class="p">(</span><span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)),</span> <span class="n">ext</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">checksum</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sha1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</code></pre></div>
+
+
+Reference: [/anki/utils.py][utils.py] (Retrieved: 2019-10-06, Anki v2.1.15)
+</details>
+
+<p><br></p>
+<p>This yields an almost unique image link (collisions are possible with the SHA-1 hash, since the input space is larger than the output space, but very unlikely) to the image file in the <code>collection.media</code> folder.</p>
+<p>The generated file follows the following naming pattern:</p>
+<div class="highlight"><pre><span></span><code>latex-hash.ext
+</code></pre></div>
+
+
+<p>where <code>hash</code> needs to be substituted with the 40 character hash and <code>ext</code> is either <code>png</code> or <code>svg</code>.</p>
+<p>When you have successfully generated images for your LaTeX code you can try finding them in your <code>collection.media</code> folder in your Anki profile folder. For the location see <a href="https://apps.ankiweb.net/docs/manual.html#file-locations">this section</a> in the Anki manual.</p>
+<p>[*]\: If you have ever previewed a card with LaTeX code you will know it saves you a lot of time.</p>
+<h2><a id="pdfTeX, XeTeX and LuaTeX"></a><a href="#table-of-contents">pdfTeX, XeTeX and LuaTeX</a></h2>
+<p>In this section I want to give a short overview of the (for this article) relevant properties of these three TeX engines. As well as a short header snippet to get you started with math related subjects.</p>
+<h3><a id="Overview"></a><a href="#table-of-contents">Overview</a></h3>
+<ul>
+<li><strong>pdfTeX</strong></li>
+<li>No native Unicode input support [*]</li>
+<li>DVI output</li>
+<li>
+<p>PDF output</p>
+</li>
+<li>
+<p><strong>XeTeX</strong></p>
+</li>
+<li>Native Unicode support</li>
+<li>XDV output (alternative to DVI files, works just as well with dvisvgm but not at all with dvipng)</li>
+<li>
+<p>PDF output</p>
+</li>
+<li>
+<p><strong>LuaTeX</strong></p>
+</li>
+<li>Native Unicode support</li>
+<li>DVI output (but broken with open type fonts, i. e. no Unicode support [**], see <a href="#broken-dvi-files-with-luatex">here</a>)</li>
+<li>PDF output
+<br></li>
+</ul>
+<p>[*]\: <code>\usepackage[utf8]{inputenc}</code> is not sufficient, you probably need to do a few more things, to get Unicode support, but with XeTeX and LuaTeX it just works (if you use the corresponding <a href="#math-starter-packs">starter pack</a>), which is what I wanted to express with that point.
+[**]\: as far as I understand, I'm no expert at this.</p>
+<p><strong>Remarks:</strong>
+The error prone DVI output with LuaTeX won't be a problem, since I will show you <a href="#pdf-png">later</a> how to do everything with PDFs which work just as well, and are far less error prone, as far as I can see.
+<details><summary>Anki encodes the <code>.tex</code> files it generates in the utf8 format, which is an important prerequisite for the Unicode input support for XeTeX and LuaTeX.</summary></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># write into a temp file</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">namedtmp</span><span class="p">(</span><span class="s2">&quot;latex_log.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">texpath</span> <span class="o">=</span> <span class="n">namedtmp</span><span class="p">(</span><span class="s2">&quot;tmp.tex&quot;</span><span class="p">)</span>
+    <span class="n">texfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">texpath</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+    <span class="n">texfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">latex</span><span class="p">)</span>
+    <span class="n">texfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">mdir</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">dir</span><span class="p">()</span>
+    <span class="n">oldcwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">png</span> <span class="o">=</span> <span class="n">namedtmp</span><span class="p">(</span><span class="s2">&quot;tmp.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ext</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The important line is <code>texfile = open(texpath, "w", encoding="utf8")</code>. Although this is not the only instance where this occurs in Anki's source code, this indicates that Anki uses the utf8 encoding for it's <code>.tex</code> files.</p>
+<p>Reference: <a href="https://github.com/dae/anki/blob/master/anki/latex.py">/anki/latex.py</a> (Retrieved: 2019.10.05, Anki v2.1.15)
+</details></p>
+<h3><a id="Math Starter Packs"></a><a href="#table-of-contents">Math Starter Packs</a></h3>
+<p>You can certainly do better than these, and I'm not really a TeX expert, I just hope to give a quick starting point to people who just want to get started.</p>
+<h4><a id="pdfTeX"></a><a href="#table-of-contents">pdfTeX</a></h4>
+<p>The default, see <a href="#latex-settings">previous section</a>, works well.</p>
+<h4><a id="XeTeX and LuaTeX"></a><a href="#table-of-contents">XeTeX and LuaTeX</a></h4>
+<p>Header:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[a4paper,10pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>   <span class="c">% You can&#39;t live without these math commands</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>   <span class="c">% A lot of math symbols</span>
+<span class="k">\usepackage</span><span class="nb">{</span>mathtools<span class="nb">}</span> <span class="c">% Extension for amsmath</span>
+<span class="k">\usepackage</span><span class="nb">{</span>xfrac<span class="nb">}</span>     <span class="c">% For better inline \frac {1}{2} use \sfrac {1}{2}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>unicode-math<span class="nb">}</span> <span class="c">% Allows Unicode input for both XeTeX and LuaTeX,</span>
+                          <span class="c">%e. g. α instead of \alpha</span>
+
+<span class="k">\setmathfont</span><span class="nb">{</span>Latin Modern Math<span class="nb">}</span> <span class="c">%A working open type math font</span>
+                                <span class="c">%see link below for a list of other available fonts</span>
+
+<span class="k">\pagestyle</span><span class="nb">{</span>empty<span class="nb">}</span> <span class="c">%to supress page numbering which hinders proper trimming</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<details><summary>Reference: </summary>
+
+I got these settings from [this][Dortmund-LaTeX-Workshop-Presentation] (only in German) great PDF, on LuaTeX and LaTeX in general, from [this workshop][Dortmund-LaTeX-Workshop].
+</details>
+
+<p><br></p>
+<p>Link to the <a href="https://ctan.org/pkg/unicode-math?lang=de">unicode-math ctan page</a> for a list of open type math fonts for <code>\setmathfonts{…}</code>.</p>
+<p>Apparently there is also <code>mathspec</code> which you can use instead of <code>unicode-math</code>, but only for XeTeX and not for LuaTeX while <code>unicode-math</code> works for both, which is why I simply use <code>unicode-math</code> for both. <a href="https://tex.stackexchange.com/questions/118244/what-is-the-difference-between-unicode-math-and-mathspec">Reference</a>.</p>
+<h2><a id="Adjusting Anki's LaTeX Build Process"></a><a href="#table-of-contents">Adjusting Anki's LaTeX Build Process</a></h2>
+<p>You will want to be using the <a href="https://ankiweb.net/shared/info/937148547">Edit LaTeX build process</a> add-on for adjusting Anki's LaTeX build process, since it does what you want perfectly. For what this is compare <a href="#png-and-svg-generation">this</a> previous section.</p>
+<p>A quick note, from my observations I noticed, that you need to restart Anki for changes in the 'Edit LaTeX build process' add-on to take effect.</p>
+<p>Once installed you can configure your LaTeX build process through the add-on, by going to <em>Tools</em> → <em>Add-ons</em> → select 'Edit LaTeX build process' → <em>Config</em>.</p>
+<p>In the following sections I'm going to give you a selection of working conversion paths you can plug into your LaTeX build process in the add-on.
+If these do not work for you, you can, with the understanding from the previous sections, comparing the examples here and informing yourself about the program you want to use, rather easily customize your LaTeX build process yourself, to use any program suitable for the job.</p>
+<p>Also, sorry to all those using Mac Os, can't test anything for you, don't know my way around Mac Os. I mainly tested these on Ubuntu, but they should also work on Windows.</p>
+<p><strong>A quick heads up:</strong>
+The argument "-no-pdf" with XeTeX sets the output to be <code>.xdv</code> instead of the standard <code>.pdf</code> output.
+See <a href="https://tex.stackexchange.com/a/42223">this</a> answer on stackexchange for a nice overview of output options for LaTeX, XeTeX and LuaTeX.</p>
+<p><strong>Reminder:</strong>
+  + For <code>.png</code> images do not forget to uncheck the 'Create scalable images with dvisvgm' <a href="#png-and-svg-generation">checkbox</a>.
+  + For <code>.svg</code> images do not forget to check the 'Create scalable images with dvisvgm' <a href="#png-and-svg-generation">checkbox</a>.
+  + Keep in mind, that the XeTeX, LuaTeX <a href="#xetex-and-luatex">starter packs</a> do not work with <code>"latex"</code> and the LaTeX <a href="#pdftex">starter pack</a> does not work with <code>"xelatex"</code> or <code>"lualatex"</code>.</p>
+<p>Also I <strong>highly recommend</strong> <code>.svg</code> over <code>.png</code> since <code>.svg</code> files are scalable and <code>.png</code> files are not, which saves you a lot of <a href="#latex-png-images-having-different-sizes-on-small-screens">problems</a> (especially on mobile), to which I haven't found a solution yet (and I don't really think are solvable).</p>
+<h3><code>.dvi</code>, <code>.xdv</code> → <code>.png</code></h3>
+<p>For a <code>.dvi</code> output you can use Anki's default process (clicking on the 'Restore Defaults' button in the 'Edit LaTeX build process' add-on, resets your configuration back to the default):</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;pngCommands&quot;: [
+        [
+            &quot;latex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;dvipng&quot;,
+            &quot;-D&quot;,
+            &quot;200&quot;,
+            &quot;-T&quot;,
+            &quot;tight&quot;,
+            &quot;tmp.dvi&quot;,
+            &quot;-o&quot;,
+            &quot;tmp.png&quot;
+        ]
+    ],
+    &quot;svgCommands&quot;: [
+    …
+</code></pre></div>
+
+
+<p>For LuaTeX you should be able to use <code>"dvilualatex"</code> instead of <code>"latex"</code>, but this does not work with the XeTeX, LuaTeX <a href="#xetex-and-luatex">starter pack</a>, since the generated <code>.dvi</code> files are <a href="#broken-dvi-files-with-luatex">broken</a>.</p>
+<p>You might have noticed, that this does not work for XeTeX's <code>.xdv</code> output. This is because 'dvipng' does not support <code>.xdv</code> or any <code>.dvi</code> version &gt; 2.
+And I don't know of an easy alternative, thus I recommend you use the <code>.pdf</code> to <code>.png</code> <a href="#pdf-png">route</a>.</p>
+<details><summary>I tried using dvisvgm to output a <code>.png</code> file, but although dvisvgm seems to have the option to output a <code>.png</code> file, this is just a <code>.svg</code> file with an <code>.png</code> file ending, and as such Anki will only show a broken image file icon.</summary>
+
+You can test this with:
+
+<div class="highlight"><pre><span></span><code>{
+    &quot;pngCommands&quot;: [
+        [
+            &quot;xelatex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;-no-pdf&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;dvisvgm&quot;,
+            &quot;--no-fonts&quot;,
+            &quot;-Z&quot;,
+            &quot;2&quot;,
+            &quot;tmp.xdv&quot;,
+            &quot;-o&quot;,
+            &quot;tmp.png&quot;
+        ]
+    ],
+    &quot;svgCommands&quot;: [
+    …
+</code></pre></div>
+
+
+
+</details>
+
+<h3><code>.dvi</code>, <code>.xdv</code> → <code>.svg</code></h3>
+<p>Here you can again, use Anki's default process:</p>
+<div class="highlight"><pre><span></span><code>  ],
+&quot;svgCommands&quot;: [
+    [
+        &quot;latex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;dvisvgm&quot;,
+        &quot;--no-fonts&quot;,
+        &quot;-Z&quot;,
+        &quot;2&quot;,
+        &quot;tmp.dvi&quot;,
+        &quot;-o&quot;,
+        &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+<details><summary>For XeTeX simply change <code>"latex"</code> to <code>"xelatex"</code>, add <code>"-no-pdf",</code> after <code>"-interaction=nonstopmode",</code> and change <code>"tmp.dvi"</code> to <code>"tmp.xdv"</code>.</summary>
+
+<div class="highlight"><pre><span></span><code>…
+],
+  &quot;svgCommands&quot;: [
+    [
+        &quot;xelatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;-no-pdf&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;dvisvgm&quot;,
+        &quot;--no-fonts&quot;,
+        &quot;-Z&quot;,
+        &quot;2&quot;,
+        &quot;tmp.xdv&quot;,
+        &quot;-o&quot;,
+        &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+</details>
+
+<p><br></p>
+<details><summary>As in the <a href="#dvi-xdv-png">previous section</a> the <code>.dvi</code> files resulting from <code>"dvilualatex"</code> are <a href="#broken-dvi-files-with-luatex">broken</a>. Here too I recommend the <code>.pdf</code> <a href="#pdf-png">route</a>.</summary>
+
+You can test this with:
+
+<div class="highlight"><pre><span></span><code>  …
+  ],
+  &quot;svgCommands&quot;: [
+    [
+        &quot;dvilualatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;dvisvgm&quot;,
+        &quot;--no-fonts&quot;,
+        &quot;-Z&quot;,
+        &quot;2&quot;,
+        &quot;tmp.dvi&quot;,
+        &quot;-o&quot;,
+        &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+</details>
+
+<h3><code>.pdf</code> → <code>.png</code></h3>
+<p>For Linux (tested for Ubuntu) I prefer to use convert from <a href="https://imagemagick.org/">ImageMagick</a>, for Windows this can get quite annoying to properly get working, since Windows has another program called convert in it's system libraries, see <a href="https://www.imagemagick.org/Usage/windows/#convert_issue">here</a> and <a href="http://savage.net.au/ImageMagick/html/install-convert.html">here</a>. Thus I use Ghostscript for Windows, the idea for which I got from <a href="https://tex.stackexchange.com/a/484344">here</a>.</p>
+<p>Also with convert you might run into this error</p>
+<div class="highlight"><pre><span></span><code>convert-im6.q16: not authorized <span class="s1">&#39;tmp.pdf&#39;</span> @ error/constitute.c/ReadImage/412.
+</code></pre></div>
+
+
+<p>or something similar. In that case <a href="#permission-authorization-problems-with-convert">this</a> might help.</p>
+<h4><a id="Linux"></a><a href="#table-of-contents">Linux</a></h4>
+<p>Instead of <code>"latex"</code> one needs to use <code>"pdflatex"</code> to get a <code>.pdf</code> output.</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+        &quot;pdflatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;convert&quot;,
+        &quot;-density&quot;,
+        &quot;50&quot;,
+        &quot;-trim&quot;,
+        &quot;tmp.pdf&quot;,
+        &quot;tmp.png&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+<details><summary>For XeTeX it is the same, you just need to change <code>"pdflatex"</code> to <code>"xelatex"</code>.</summary>
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+        &quot;xelatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;convert&quot;,
+        &quot;-density&quot;,
+        &quot;50&quot;,
+        &quot;-trim&quot;,
+        &quot;tmp.pdf&quot;,
+        &quot;tmp.png&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+</details>
+
+<details><summary>For LuaTeX it is the same, you just need to change <code>"pdflatex"</code> to <code>"lualatex"</code>.</summary>
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+        &quot;lualatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;convert&quot;,
+        &quot;-density&quot;,
+        &quot;50&quot;,
+        &quot;-trim&quot;,
+        &quot;tmp.pdf&quot;,
+        &quot;tmp.png&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+</details>
+
+<p><br></p>
+<p>You can also use Ghostscript:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+      &quot;pdflatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;gswin32c&quot;,
+      &quot;-dNOPAUSE&quot;,
+      &quot;-sDEVICE=pngalpha&quot;,
+      &quot;-r300&quot;,
+      &quot;-dBATCH&quot;,
+      &quot;-dSAFER&quot;,
+      &quot;-sOutputFile=\&quot;tmp.png\&quot;&quot;,
+      &quot;tmp.pdf&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+<h4><a id="Windows"></a><a href="#table-of-contents">Windows</a></h4>
+<p>For a 32-bit Windows installation you can use:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+      &quot;pdflatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;gswin32c&quot;,
+      &quot;-dNOPAUSE&quot;,
+      &quot;-sDEVICE=pngalpha&quot;,
+      &quot;-r300&quot;,
+      &quot;-dBATCH&quot;,
+      &quot;-dSAFER&quot;,
+      &quot;-sOutputFile=\&quot;tmp.png\&quot;&quot;,
+      &quot;tmp.pdf&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+<p><a href="https://tex.stackexchange.com/a/484344">Reference</a> (Retrieved: 2019-10-07)</p>
+<details><summary>For a 64-bit Windows installation, you just need to change <code>"gswin32c"</code> to <code>"gswin64c"</code> (see <a href="https://www.ghostscript.com/doc/9.21/Install.htm#Install_Windows">here</a>).</summary>
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;pngCommands&quot;: [
+    [
+      &quot;pdflatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;gswin32c&quot;,
+      &quot;-dNOPAUSE&quot;,
+      &quot;-sDEVICE=pngalpha&quot;,
+      &quot;-r300&quot;,
+      &quot;-dBATCH&quot;,
+      &quot;-dSAFER&quot;,
+      &quot;-sOutputFile=\&quot;tmp.png\&quot;&quot;,
+      &quot;tmp.pdf&quot;
+    ]
+  ],
+  &quot;svgCommands&quot;: [
+  …
+</code></pre></div>
+
+
+</details>
+
+<p><br></p>
+<p>Again, for XeTeX or LuaTeX you just need to change <code>"pdflatex"</code> to <code>"xelatex"</code> or <code>"lualatex"</code>.</p>
+<h3><code>.pdf</code> → <code>.svg</code></h3>
+<p>My go to programs for these steps are pdfcrop and pdf2svg. I also use pdfcrop to crop PDFs I use, create, thus I'm using it here. Again there are multiple options, which you can easily find on the web.</p>
+<p>Instead of <code>"latex"</code> one needs to use <code>"pdflatex"</code> to get a <code>.pdf</code> output.</p>
+<div class="highlight"><pre><span></span><code>  …
+  ],
+  &quot;svgCommands&quot;: [
+    [
+        &quot;pdflatex&quot;,
+        &quot;-interaction=nonstopmode&quot;,
+        &quot;tmp.tex&quot;
+    ],
+    [
+        &quot;pdfcrop&quot;,
+        &quot;tmp.pdf&quot;,
+        &quot;tmp.pdf&quot;
+    ],
+    [
+        &quot;pdf2svg&quot;,
+        &quot;tmp.pdf&quot;,
+        &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+<p>You can do additional adjustments using optional arguments for pdfcrop and pdf2svg but I have found, that this already works quite well. You can find pdfcrop <a href="http://pdfcrop.sourceforge.net/">here</a> and pdf2svg <a href="https://github.com/dawbarton/pdf2svg">here</a>.</p>
+<details><summary>For XeTeX it is the same, you just need to change <code>"pdflatex"</code> to <code>"xelatex"</code>.</summary>
+
+<div class="highlight"><pre><span></span><code>  …
+  ],
+  &quot;svgCommands&quot;: [
+    [
+      &quot;xelatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;pdfcrop&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.pdf&quot;
+    ],
+    [
+      &quot;pdf2svg&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+</details>
+
+<details><summary>For LuaTeX it is the same, you just need to change <code>"pdflatex"</code> to <code>"lualatex"</code>.</summary>
+
+<div class="highlight"><pre><span></span><code>  …
+  ],
+  &quot;svgCommands&quot;: [
+    [
+      &quot;lualatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;pdfcrop&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.pdf&quot;
+    ],
+    [
+      &quot;pdf2svg&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.svg&quot;
+    ]
+  ]
+}
+</code></pre></div>
+
+
+</details>
+
+<p><br></p>
+<details><summary>Additionally I can recommend using svgcleaner to reduce the size of the <code>.svg</code> files, to reduce the size of the collection.media folder.</summary>
+
+After the pdf2svg part just append this:
+
+<div class="highlight"><pre><span></span><code>[
+  &quot;svgcleaner&quot;,
+  &quot;tmp.svg&quot;,
+  &quot;tmp.svg&quot;,
+]
+</code></pre></div>
+
+
+In total this would look like this, for pdfTeX:
+
+<div class="highlight"><pre><span></span><code>  …
+  ],
+  &quot;svgCommands&quot;: [
+    [
+      &quot;pdflatex&quot;,
+      &quot;-interaction=nonstopmode&quot;,
+      &quot;tmp.tex&quot;
+    ],
+    [
+      &quot;pdfcrop&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.pdf&quot;
+    ],
+    [
+      &quot;pdf2svg&quot;,
+      &quot;tmp.pdf&quot;,
+      &quot;tmp.svg&quot;
+    ],
+    [
+      &quot;svgcleaner&quot;,
+      &quot;tmp.svg&quot;,
+      &quot;tmp.svg&quot;,
+    ]
+  ]
+}
+</code></pre></div>
+
+
+</details>
+
+<h2><a id="Troubleshooting"></a><a href="#table-of-contents">Troubleshooting</a></h2>
+<h3><a id="Read First"></a><a href="#table-of-contents">Read First</a></h3>
+<p>Don’t use <code>[Latex]{{Anki-Field}}[/Latex]</code> in your card design, <code>[Latex]…[/Latex]</code> needs to surround the material within the <code>{{Anki-Field}}</code>. See <a href="https://apps.ankiweb.net/docs/manual.html#media-&amp;-latex-references">this</a> section in the Anki manual.</p>
+<p>What you can do though, is, for example, use <code>[Latex]…[/Latex] {{Anki-Field}}</code> before the field reference. [*]</p>
+<p>Here you need to take care, not to have <code>{{</code> or <code>}}</code> (or I suppose <code>{{{</code> and <code>}}}</code>), since these are reserved for field references like <code>{{Anki-Field}}</code>. Adding <code>{{=&lt;% %&gt;=}}</code> on your cards front and back template and then changing every <code>{{Anki-Field}}</code> to <code>&lt;%Anki-Field%&gt;</code> remedies that problem, see [*] and <a href="https://www.reddit.com/r/Anki/comments/9fk4ri/using_double_curly_brackets_inside_cards/">here</a> and <a href="https://anki.tenderapp.com/discussions/ankidesktop/2863-how-to-escaping-curly-braces">here</a> for an explanation.</p>
+<p>This does not work with cloze deletion however. [*] As far as I can tell, from testing, using <code>{{=&lt;% %&gt;=}}</code> on your front or back template completely breaks the cloze deletion function. For this, or in general you can simply change <code>}}</code> to <code>} }</code> which does not affect the result of your LaTeX, or MathJax code but makes it work with field references and cloze deletion.</p>
+<p>Also, you can't use <code>\def</code> or <code>\input</code> in your cards, which means, you also can't define your own LaTeX commands directly in the header, but need to use a workaround, see <a href="">here</a>.
+Reference for this is this section in the Anki manual [*] (Retrieved: 2019.10.05):</p>
+<blockquote>
+<p>Anki prohibits certain commands like \input or \def from being used on cards or in templates, because allowing them could allow malicious shared decks to damage your system. (To be on the safe side, these commands are prohibited even in comments, so if you’re getting this error but don’t think you’ve used one, please double-check any comments you have in your headers, templates, and cards.) If you need to use these commands, please add them to a system package and import that package as described in the previous section.</p>
+</blockquote>
+<p>Furthermore, I'm certain, I have seen somewhere, that you should not use <code>%</code> in your LaTeX fields, but I can't find it anymore. If this were true, it would explain some errors I had when commenting stuff within the LaTeX delimiters.</p>
+<p>[*]\: <a href="https://apps.ankiweb.net/docs/manual.html#latex-conflicts">Reference</a></p>
+<h3><a id="Broken Image Files Don't Get Replaced After Using _Tools_ → _Check Media_"></a><a href="#table-of-contents">Broken Image Files Don't Get Replaced After Using <em>Tools</em> → <em>Check Media</em></a></h3>
+<p>I had this happen to me while testing, when I had created broken <code>.svg</code> files using dvilualatex and my XeTeX, LuaTeX <a href="">starter pack</a>. I noticed what had gone wrong, fixed the <a href="">built process</a> in the add-on, restarted, and noticed that <em>Check Media</em> didn't do anything.
+This is because Anki checks, whether there are already images with the <a href="">corresponding hash</a> and the correct file ending (in this case <code>.svg</code>). A easy solution is to switch to <code>.png</code> files in your note <a href="">type options</a>, use <em>Check Media</em> and delete unused media files, switch back to <code>.svg</code> and use <em>Check Media</em> again, which should have solved the problem because it deletes the unused <code>.svg</code> files, allowing us to replace them with the correct ones.</p>
+<h3><a id="Broken <code>.dvi</code> Files with LuaTeX"></a><a href="#table-of-contents">Broken <code>.dvi</code> Files with LuaTeX</a></h3>
+<p>For LuaTeX you should be able to use <code>"dvilualatex"</code> instead of <code>"latex"</code>, but this does not work, since the resulting <code>.dvi</code> file seems to be broken.</p>
+<details><summary>You can test this with:</summary>
+
+<div class="highlight"><pre><span></span><code>{
+    &quot;pngCommands&quot;: [
+        [
+            &quot;dvilualatex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;dvipng&quot;,
+            &quot;-D&quot;,
+            &quot;200&quot;,
+            &quot;-T&quot;,
+            &quot;tight&quot;,
+            &quot;tmp.dvi&quot;,
+            &quot;-o&quot;,
+            &quot;tmp.png&quot;
+        ]
+    ],
+    &quot;svgCommands&quot;: [
+    …
+</code></pre></div>
+
+
+
+I also used the XeTeX, LuaTeX starter pack from [here](#xetex-and-luatex).
+</details>
+
+<p><br></p>
+<p>This <a href="https://tex.stackexchange.com/questions/144805/is-it-possible-to-use-lualatexs-dvi-output-with-fontspec-without-getting-fo">seems to be</a>, because <code>.dvi</code> does not support open type fonts, i. e. you can not use <code>\usepackage{fontspec}</code> in your LaTeX header field or things using open type fonts, which, in my opinion, is one of the major reasons for using LuaTeX, since this allows Unicode input support (as far as I understand).</p>
+<p>Thus you can either use an engine other than LuaTeX, not use open type fonts or use a <code>.pdf</code> → … <a href="">route</a>. The latter being my clear recommendation, since it comes with no real downsides.</p>
+<h3><code>latex-….svg</code> Images Not Showing on AnkiDroid</h3>
+<p>If you have AnkiDroid v2.8.4 or anything below AnkiDroid v2.9 alpha 12, you won't be able to view your <code>.svg</code> image files on AnkiDroid, since support in AnkiDroid for Anki's 'Create scalable images with dvisvgm' checkbox was only implemented then, according to <a href="https://github.com/ankidroid/Anki-Android/pull/4724">here</a>.</p>
+<p>I can confirm, that in the current AnkiDroid v2.9 beta <code>latex-….svg</code> files just work as expected. Also, as far as I can see, the beta is very stable and if you backup regularly I don't see a reason why you shouldn't just switch to the beta.
+See <a href="https://docs.ankidroid.org/#betaTesting">here</a> in the AnkiDroid manual on how to join the beta. Alternatively you can always just get the latest <code>.apk</code> from <a href="https://github.com/ankidroid/Anki-Android/releases">here</a>.</p>
+<h3>Permission / Authorization Problems with 'convert'</h3>
+<p>With convert I ran into this error:</p>
+<div class="highlight"><pre><span></span><code>convert-im6.q16: not authorized <span class="s1">&#39;tmp.pdf&#39;</span> @ error/constitute.c/ReadImage/412.
+</code></pre></div>
+
+
+<p>(Note: im6.q16 is my ImageMagick program version, so you'll probably have something different here.)</p>
+<p>In my case this was, because for security reasons ImageMagick imposes restrictions on which files it is allowed to read and write, see <a href="https://imagemagick.org/script/security-policy.php">here</a>.</p>
+<p>To check, whether this is a problem for you, or to fix it, you need to find ImageMagick's <code>policy.xml</code> file. On Ubuntu you can find this in <code>/etc/ImageMagick-6/</code> (clear, find the ImageMagick version you use).
+Here you need to find line</p>
+<div class="highlight"><pre><span></span><code>  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&quot;coder&quot;</span> <span class="na">rights=</span><span class="s">&quot;none&quot;</span> <span class="na">pattern=</span><span class="s">&quot;PDF&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+
+<p>and change it to</p>
+<div class="highlight"><pre><span></span><code>  <span class="nt">&lt;policy</span> <span class="na">domain=</span><span class="s">&quot;coder&quot;</span> <span class="na">rights=</span><span class="s">&quot;read&quot;</span> <span class="na">pattern=</span><span class="s">&quot;PDF&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+
+<p>This was the error I had when I was trying to convert <code>tmp.pdf</code> to <code>tmp.png</code>, depending on what you where doing (intending on doing) you might have to change a different line.</p>
+<h3><code>latex-….png</code> Images Having Different Sizes on Small Screens</h3>
+<h4>Problem</h4>
+<p>Example of the problem on narrow screens:
+<img alt="PNG scaling example - big font - narrow screen" src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/PNG-Big-Narrow-Screen.png"></p>
+<p>Example of how it should look like on wide screen:
+<img alt="PNG scaling example - big font - wide screen" src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/PNG-Big-Wide.png"></p>
+<details><summary>Image of the example with smaller resolution (you get the same for a similarly small font) on a narrow screen.</summary>
+
+<img alt="PNG scaling example - tiny font - narrow screen" src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/PNG-Tiny-Narrow.png">
+</details>
+
+<details><summary>Image of the example with smaller resolution (you get the same for a similarly small font) on a wide screen.</summary>
+
+<img alt="PNG scaling example - tiny font - wide screen" src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/PNG-Tiny-Wide.png">
+</details>
+
+<details><summary>Image of the example as a <code>.svg</code> file, on a narrow screen.</summary>
+
+<img src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/SVG-Narrow.png" alt="SVG scaling example - narrow screen">
+</details>
+
+<details><summary>Image of the example as a <code>.svg</code> file, on a wide screen.</summary>
+
+<img src="/anki/Troubleshooting-PNGs-DifferentSizesOnSmallScreens/SVG-Wide.png" alt="SVG scaling example - wide screen">
+</details>
+
+<p><br></p>
+<p>The narrow screen and wide screen examples are each roughly the same size on screen (taken as screenshots, so compare image sizes).
+<details><summary>Settings for the examples: </summary></p>
+<p>Settings for <code>.png</code> files:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;pngCommands&quot;: [
+        [
+            &quot;lualatex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;convert&quot;,
+            &quot;-density&quot;,
+            &quot;200&quot;,
+            &quot;-trim&quot;,
+            &quot;tmp.pdf&quot;,
+            &quot;tmp.png&quot;
+        ]
+    ],
+    &quot;svgCommands&quot;: [
+    …
+</code></pre></div>
+
+
+<p>For small <code>.png</code> files, I changed <code>"200"</code> to <code>"50"</code>.</p>
+<p>Settings for <code>.svg</code> files:</p>
+<div class="highlight"><pre><span></span><code>    …
+    ],
+    &quot;svgCommands&quot;: [
+        [
+            &quot;lualatex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;pdfcrop&quot;,
+            &quot;tmp.pdf&quot;,
+            &quot;tmp.pdf&quot;
+        ],
+        [
+            &quot;pdf2svg&quot;,
+            &quot;tmp.pdf&quot;,
+            &quot;tmp.svg&quot;
+        ]
+    ]
+}
+</code></pre></div>
+
+
+<p>I also used the XeTeX, LuaTeX starter pack from <a href="#xetex-and-luatex">here</a>.
+</details>
+<br></p>
+<p>For me the error appears on mobile and on the desktop version, but only if the screen isn’t big enough to fit the whole picture width on the screen, then it rescales the too large picture while preserving it’s ratio while the other not too large pictures are not rescaled, which leads to the difference in size.</p>
+<p>This does not occur with MathJax where they are not rescaled or wrapped (if they are not broken up in smaller parts), but just go over the edge, which forces you to pan or crop out.</p>
+<h4>Solutions</h4>
+<ul>
+<li>Switch to <code>.svg</code> (they can also scale without loss of resolution)</li>
+<li>Use <code>\tiny</code> (but be prepared for horrendous resolution)</li>
+<li>Reduce the image size or resolution (again, pixelation follows)</li>
+<li>Only view your cards on big screens, or more accurate wide screens</li>
+<li>On mobile you can try switching to landscape mode</li>
+<li>Surround everything with <code>[latex]…[/latex]</code></li>
+</ul>
+<p>If you can, I would always recommend switching to <code>.svg</code> images since these are better in every regard (when available!, not everything can be efficiently vectorized though, your LaTeX output can be though). If that is not an option, a combination of reducing your resolution or image size and using bigger screens is your only hope, as far as I know. Or MathJax, since that would be a great use for it.</p>
+<h5>Using <code>\tiny</code></h5>
+<p>In order for your cards to use <code>\tiny</code> (or <code>begin{tiny}</code> and <code>end{tiny}</code> to affect a larger scope) you can change your LaTeX Header to</p>
+<div class="highlight"><pre><span></span><code>…
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tiny<span class="nb">}</span> <span class="c">%notice that it’s »tiny« not »\tiny«</span>
+</code></pre></div>
+
+
+<p>and your Footer to</p>
+<div class="highlight"><pre><span></span><code><span class="k">\end</span><span class="nb">{</span>tiny<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>I got this solution from <a href="https://tex.stackexchange.com/a/132799">here</a> and <a href="https://texblog.org/2012/08/29/changing-the-font-size-in-latex/">here</a>.</p>
+<p>In my experience <code>\scriptsize</code> is not small enough, to make <code>.png</code> properly behave on my phone, so you will likely need to use <code>\tiny</code>. For a good overview of corresponding <code>pt</code> sizes see <a href="https://tex.stackexchange.com/a/24600">here</a>.</p>
+<p>Another problem with <code>\tiny</code> is, that you need to adjust the density settings in the cropping process, otherwise the resulting <code>.png</code> files, have a low resolution. Increasing the resolution solves the pixelation problem, but you again have images, that are too large. Thus you end up with the same problem you tried to solve by using <code>\tiny</code> in the first place.</p>
+<p>Changing the size in</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[a4paper,10pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>is apparently also not an easy option, since LaTeX only supports <code>10pt</code>, <code>11pt</code> and <code>12pt</code> without using any special packages (see <a href="https://texblog.org/2012/08/29/changing-the-font-size-in-latex/">here</a>, but you can easily test this yourself).</p>
+<h5>Changing the Resolution</h5>
+<p>You would do this by, for example changing <code>"200"</code> to <code>"50"</code> in</p>
+<div class="highlight"><pre><span></span><code>[
+    &quot;dvipng&quot;,
+    &quot;-D&quot;,
+    &quot;200&quot;,
+    &quot;-T&quot;,
+    &quot;tight&quot;,
+    &quot;tmp.dvi&quot;,
+    &quot;-o&quot;,
+    &quot;tmp.png&quot;
+]
+</code></pre></div>
+
+
+<p>which roughly corresponds to using <code>\tiny</code>, or by changing <code>"200"</code> to <code>"50"</code> in</p>
+<div class="highlight"><pre><span></span><code>[
+    &quot;convert&quot;,
+    &quot;-density&quot;,
+    &quot;200&quot;,
+    &quot;-trim&quot;,
+    &quot;tmp.pdf&quot;,
+    &quot;tmp.png&quot;
+]
+</code></pre></div>
+
+
+<h5>Surround Everything with <code>[latex]…[/latex]</code></h5>
+<p>This makes Front and Back one huge LaTeX document. It mostly works, as long as it's not too long, since at some point Anki resizes differently again. This was my go to solution in the past, but it obviously doesn't really work with cloze deletion cards. I was reminded about this option due to <a href="https://tex.stackexchange.com/a/289200">this</a> stackexchange answer.</p>
+<h3>Inline Vertical Alignment Problems</h3>
+<p>One of the great things about MathJax is, that it solved all the vertical alignment problems.
+Compare this image using MathJax (also please imagine <code>, are</code> instead of what is depicted)
+<img alt="Inline Vertical Alignment Problem - MathJax example" src="/anki/Inline-Vertical-Alignment-Problems/MathJax.png">
+<details><summary>Source code: </summary></p>
+<div class="highlight"><pre><span></span><code>Symbols like <span class="s">\(</span><span class="nb">ρ</span><span class="s">\)</span> or <span class="s">\(</span><span class="nb">β</span><span class="s">\)</span>, which have <span class="s">\(</span><span class="nv">\text</span><span class="nb">{elements,}</span><span class="s">\)</span> unlike <span class="s">\(</span><span class="nb">A</span><span class="s">\)</span> or <span class="s">\(</span><span class="nb">α</span><span class="s">\)</span>, which go below the line are not correctly aligned.
+Similarly with longer Elements, like the above or <span class="s">\(</span><span class="nb">π </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">.</span><span class="m">14</span><span class="nb">…</span><span class="s">\)</span>.
+</code></pre></div>
+
+
+<p></details>
+<br></p>
+<p>to this image using LaTeX</p>
+<p><img alt="Inline Vertical Alignment Problem - Unaligned LaTeX example" src="/anki/Inline-Vertical-Alignment-Problems/LaTeX-Unaligned.png"></p>
+<details><summary>Source code: </summary>
+
+<div class="highlight"><pre><span></span><code>Symbols like [<span class="s">$</span><span class="o">]</span><span class="nb">ρ</span><span class="o">[/</span><span class="s">$</span>] or [<span class="s">$</span><span class="o">]</span><span class="nb">β</span><span class="o">[/</span><span class="s">$</span>], which have [<span class="s">$</span><span class="o">]</span><span class="nv">\text</span><span class="nb">{elements,}</span><span class="o">[/</span><span class="s">$</span>] unlike [<span class="s">$</span><span class="o">]</span><span class="nb">A</span><span class="o">[/</span><span class="s">$</span>] or [<span class="s">$</span><span class="o">]</span><span class="nb">α</span><span class="o">[/</span><span class="s">$</span>], which go below the line are not correctly aligned.
+Similarly with longer Elements, like the above or [<span class="s">$</span><span class="o">]</span><span class="nb">π </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">.</span><span class="m">14</span><span class="nb">…</span><span class="o">[/</span><span class="s">$</span>].
+</code></pre></div>
+
+
+</details>
+
+<details><summary>Settings: </summary>
+
+<div class="highlight"><pre><span></span><code>    …
+    ],
+    &quot;svgCommands&quot;: [
+        [
+            &quot;lualatex&quot;,
+            &quot;-interaction=nonstopmode&quot;,
+            &quot;tmp.tex&quot;
+        ],
+        [
+            &quot;pdfcrop&quot;,
+            &quot;tmp.pdf&quot;,
+            &quot;tmp.pdf&quot;
+        ],
+        [
+            &quot;pdf2svg&quot;,
+            &quot;tmp.pdf&quot;,
+            &quot;tmp.svg&quot;
+        ]
+    ]
+}
+</code></pre></div>
+
+
+I also used the XeTeX, LuaTeX starter pack from [here](#xetex-and-luatex).
+</details>
+
+<p><br></p>
+<p>A nice option for 'fixing' the vertical alignment property I found <a href="https://clementc.github.io/blog/2018/08/15/anki_setup/">here</a> and <a href="https://stackoverflow.com/a/31862519">here</a> is adding</p>
+<div class="highlight"><pre><span></span><code><span class="nx">img</span><span class="p">[</span><span class="nx">src</span><span class="o">*=</span><span class="s2">&quot;latex&quot;</span><span class="p">]</span> <span class="p">{</span>
+  <span class="nx">vertical</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">middle</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>to the styling section on your card. (<em>Tools</em> → <em>Manage Note Types</em> → select your note type → <em>Cards…</em> → paste the above into the <em>Styling (shared between cards)</em> field e. g. directly after <code>.card {…}</code>.)</p>
+<p>This made the above example look like this:
+<img alt="Inline Vertical Alignment Problem - Aligned LaTeX example" src="/anki/Inline-Vertical-Alignment-Problems/LaTeX-Aligned.png"></p>
+<p>As you can see the above script for fixing the vertical alignment problem is not perfect like MathJax, but it makes it tolerable. Also some elements like the <code>A</code> get worse, but most get better.</p>
+<h3>LaTeX Images Are to Big or Too Small</h3>
+<p>A great solution for this I found <a href="https://www.reddit.com/r/Anki/comments/4ucweb/anki_latex_image_quality/d5p3p9f/">here</a> and <a href="https://anki.tenderapp.com/discussions/ankidesktop/9033-solution-have-latex-equations-displayed-at-full-resolution-on-macbook-pro-with-retina-display">here</a>, was to use</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nx">latex</span> <span class="p">{</span>
+  <span class="nx">zoom</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>in your cards styling section, which allows you to control the zoom, i. e. the size the images appear for you in Anki.</p>
+<p>You can also combine this with platform specific CSS, see <a href="https://apps.ankiweb.net/docs/manual.html#platform-specific-css">this</a> section in the manual. I have found that this works for me:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nx">mobile</span> <span class="p">.</span><span class="nx">latex</span> <span class="p">{</span>
+  <span class="nx">zoom</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You can add both of these to your styling section, to control the size the LaTeX images appear in Anki, AnkiDroid and AnkiMobile. Apparently, <code>.mobile .latex {…}</code> and <code>.latex {…}</code> are not multiplicative i. e. <code>.latex { zoom: 1000%; }</code> and <code>.mobile .latex {zoom: 10%; }</code> together don't yield a normal <code>100%</code> zoom on mobile, so you don't even need to specify a platform other than <code>.mobile …</code>.</p>
+<p>In a similar manner you should be able to combine <code>.PlatformYouWant .latex {…}</code> with any platform or browser to control the size of the LaTex images there.</p>
+<h2>Tips for Debugging</h2>
+<p>In the end I want to leave you with a few tips, to help you find and solve errors you encounter.</p>
+<ul>
+<li>Obvious, but still important to mention: Use the search engine of your choice to find information on the problem in general or better yet, to find a specific error message you got or found in the logs.</li>
+<li>To solve a specific problem in the image generation process the place with all the information, aside maybe from your LaTeX build process, will be the <code>/anki_temp/</code> folder, see <a href="#tex-generation">here</a> for the location.</li>
+<li>In your <code>/anki_temp/</code> folder look at the <code>.log</code> file to determine where in Anki's image generation process the error is. Scroll down to the bottom, find the last program used as well as the error message.</li>
+<li>If your error is with the <code>.tex</code> file you can try opening it with the <code>.tex</code> IDE of your choice and try to compile it to find errors, or doing it directly in the command line.</li>
+<li>Try looking at the resulting <code>.pdf</code>, <code>.dvi</code>, <code>.xdv</code> files or the resulting <code>.png</code> or <code>.svg</code> file to identify things that could lead to errors or bugs somewhere in your image generation process, e. g. page numbers in your <code>.pdf</code> file.</li>
+</ul>
+<!--Links:-->                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
